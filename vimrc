@@ -1,9 +1,21 @@
 " mode not vi compatible
 set nocompatible
 
+" Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+runtime! ~/.vim/autoload/pathogen.vim
+call pathogen#runtime_append_all_bundles()
+" call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundle'))
+call pathogen#helptags()
+
+" On some Linux systems, this is necessary to make sure pathogen picks up ftdetect directories in plugins
 filetype off
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
+
+" set <Leader> to ","
+let mapleader = ","
+
+filetype on
+filetype plugin on
+filetype indent on
 
 set number
 set ruler
@@ -29,9 +41,6 @@ set smartcase
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,test/fixtures/*,vendor/gems/*
-
-" set <Leader> to ","
-let mapleader = ","
 
 " Status bar
 set laststatus=2
