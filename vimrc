@@ -1,6 +1,7 @@
 " mode not vi compatible
 set nocompatible
 
+filetype off
 silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
 
