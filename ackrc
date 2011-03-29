@@ -1,0 +1,19 @@
+--ignore-dir=rails
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=vendor
+--ignore-dir=gems
+
+# --no-css
+
+# groups the results by file
+--group
+
+# only show one line of output context around the results
+# --context=1
+
+# follow symlinks
+--follow
+
+--color
+
