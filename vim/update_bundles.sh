@@ -48,6 +48,7 @@ require 'fileutils'
 require 'open-uri'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
+FileUtils.mkdir(bundles_dir) unless File.exist?(bundles_dir)
 
 FileUtils.cd(bundles_dir)
 
