@@ -9,5 +9,8 @@ These are config files to set up a system the way I like it.
   cd ~/.dotfiles
   rake install
   
-  ./update_bundles.sh to update all vim plugins
+  to update all vim plugins:
+  
+  cd vim/
+  ./update_bundles.sh 
 
