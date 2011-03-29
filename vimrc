@@ -1,9 +1,8 @@
-filetype off
-
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
+" mode not vi compatible
 set nocompatible
+
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
 
 set number
 set ruler
@@ -133,8 +132,9 @@ set modelines=10
 color desert
 
 " Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+set backup
+set backupdir=$HOME/.vim/backup/
+set directory=$HOME/.vim/backup/
 
 " Turn off jslint errors by default
 let g:JSLintHighlightErrorLine = 0
