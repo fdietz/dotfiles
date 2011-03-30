@@ -53,6 +53,9 @@ set noequalalways
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
+" navigates nerdtree to the current file
+map <Leader><S-s> :NERDTree %:p:h<CR> 
+" NERDTreeFind
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
@@ -223,10 +226,6 @@ map <C-A-left> <ESC>:bp<CR>
 " ctags.vim
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
-" map <D-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
-" navigates nerdtree to the current file
-" map <leader><S-d> :NERDTree %:p:h<CR> 
-
 " ,w will easily switch window focus
 map <leader>w <C-w>w
 
@@ -235,10 +234,6 @@ nmap <leader><S-s> :call Preserve("%s/\\s\\+$//e")<CR>
 
 " <Leader> timeout 
 set timeoutlen=500
-
-" run test with Cmd-r and Cmd-R (depends on rails.vim)
-" map <D-r>:Rake<CR>
-" map <D-R>:.Rake<CR>
 
 " settings for VimClojure
 let g:vimclojure#HighlightBuiltins=1   " Highlight Clojure's builtins
