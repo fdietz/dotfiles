@@ -1,10 +1,4 @@
---ignore-dir=rails
---ignore-dir=tmp
---ignore-dir=log
---ignore-dir=vendor
---ignore-dir=gems
-
-# --no-css
+--no-css
 
 # groups the results by file
 --group
@@ -16,4 +10,12 @@
 --follow
 
 --color
+
+--ignore-dir=gems
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=engines/perl_backend/test/stub_data
+--ignore-dir=public/ass-xe
+
 
