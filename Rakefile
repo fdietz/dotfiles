@@ -72,35 +72,37 @@ task :install do
   end
 end
 
-desc "upate all vim bundles"
-task :update_vim_bundles do
-  cd_bundle_dir
+namespace :vim do
+  desc "upate vim bundles"
+  task :update_bundles do
+    cd_bundle_dir
 
-  puts "Trashing everything (lookout!)"
-  Dir["*"].each {|d| FileUtils.rm_rf d }
+    puts "Trashing everything (lookout!)"
+    Dir["*"].each {|d| FileUtils.rm_rf d }
 
-  git_bundles.each do |url|
-    dir = url.split('/').last.sub(/\.git$/, '')
-    puts "  Unpacking #{url} into #{dir}"
-    `git clone #{url} #{dir}`
-    FileUtils.rm_rf(File.join(dir, ".git"))
-  end
-end
-
-desc "build all vim bundles"
-task :build_vim_bundles do
-  cd_bundle_dir
-  
-  puts "build command-t bundle"
-  Dir.chdir "Command-T/ruby/command-t" do
-    if File.exists?("/usr/bin/ruby1.8") # prefer 1.8 on *.deb systems
-      system "/usr/bin/ruby1.8 extconf.rb"
-    elsif File.exists?("/usr/bin/ruby") # prefer system rubies
-      system "/usr/bin/ruby extconf.rb"
-    elsif `rvm > /dev/null 2>&1` && $?.exitstatus == 0
-      system "rvm system ruby extconf.rb"
+    git_bundles.each do |url|
+      dir = url.split('/').last.sub(/\.git$/, '')
+      puts "  Unpacking #{url} into #{dir}"
+      `git clone #{url} #{dir}`
+      FileUtils.rm_rf(File.join(dir, ".git"))
     end
-    system "make clean && make"
+  end
+
+  desc "build vim bundles"
+  task :build_bundles do
+    cd_bundle_dir
+  
+    puts "build command-t bundle"
+    Dir.chdir "Command-T/ruby/command-t" do
+      if File.exists?("/usr/bin/ruby1.8") # prefer 1.8 on *.deb systems
+        system "/usr/bin/ruby1.8 extconf.rb"
+      elsif File.exists?("/usr/bin/ruby") # prefer system rubies
+        system "/usr/bin/ruby extconf.rb"
+      elsif `rvm > /dev/null 2>&1` && $?.exitstatus == 0
+        system "rvm system ruby extconf.rb"
+      end
+      system "make clean && make"
+    end
   end
 end
 
