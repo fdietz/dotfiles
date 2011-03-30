@@ -10,7 +10,8 @@ These are config files to set up a system the way I like it.
   rake install
   
   to update all vim plugins:
+  rake vim:update_bundles
   
-  cd vim/
-  ./update_bundles.sh 
+  some vim plugins require building c extensions:
+  rake vim:build_bundles
 
