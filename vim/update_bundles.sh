@@ -38,12 +38,6 @@ git_bundles = [
   "git://github.com/wincent/Command-T.git"
 ]
 
-# vim_org_scripts = [
-#   ["IndexedSearch", "7062",  "plugin"],
-#   ["gist",          "12732", "plugin"],
-#   ["jquery",        "12107", "syntax"],
-# ]
-
 require 'fileutils'
 require 'open-uri'
 
@@ -62,11 +56,14 @@ git_bundles.each do |url|
   FileUtils.rm_rf(File.join(dir, ".git"))
 end
 
-# vim_org_scripts.each do |name, script_id, script_type|
-#   puts "  Downloading #{name}"
-#   local_file = File.join(name, script_type, "#{name}.vim")
-#   FileUtils.mkdir_p(File.dirname(local_file))
-#   File.open(local_file, "w") do |file|
-#     file << open("http://www.vim.org/scripts/download_script.php?src_id=#{script_id}").read
-#   end
-# end
+# build command-t plugin
+Dir.chdir "Command-T/ruby/command-t" do
+  if File.exists?("/usr/bin/ruby1.8") # prefer 1.8 on *.deb systems
+    system "/usr/bin/ruby1.8 extconf.rb"
+  elsif File.exists?("/usr/bin/ruby") # prefer system rubies
+    system "/usr/bin/ruby extconf.rb"
+  elsif `rvm > /dev/null 2>&1` && $?.exitstatus == 0
+    system "rvm system ruby extconf.rb"
+  end
+  system "make clean && make"
+end
