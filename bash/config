@@ -1,0 +1,8 @@
+# required for mysql to compile correctly on snow leopard
+export ARCHFLAGS="-arch x86_64"
+
+# ssh-askpass
+export SSH_ASKPASS="macos-askpass"
+export DISPLAY=":0"
+
+export EDITOR=mate
