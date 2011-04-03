@@ -230,7 +230,19 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 map <leader>w <C-w>w
 
 " Clean up the trailing spaces
-nmap <leader><S-s> :call Preserve("%s/\\s\\+$//e")<CR>
+map <Leader>I :call Preserve("normal gg=G")<CR>:call Preserve("%s/\\s\\+$//e")<CR>
+" a function that preserves the state when commands are called
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 
 " <Leader> timeout 
 set timeoutlen=500
