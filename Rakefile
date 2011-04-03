@@ -38,7 +38,8 @@ git_bundles = [
   "git://github.com/bdd/vim-scala.git",
   "git://github.com/mattn/gist-vim.git",
   "git://github.com/vim-scripts/VimClojure.git",
-  "git://github.com/wincent/Command-T.git"
+  "git://github.com/wincent/Command-T.git",
+  "git://github.com/corntrace/bufexplorer.git"
 ]
 
 desc "install the dot files into user's home directory"
