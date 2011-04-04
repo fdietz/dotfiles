@@ -57,11 +57,10 @@ set noequalalways
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
-" navigates nerdtree to the current file
-map <Leader><S-s> :NERDTree %:p:h<CR> 
-" NERDTreeFind
-
+" NERDTreeFind - navigates nerdtree to the current file
+map <Leader>N :NERDTreeFind<CR>
 " Command-T configuration
+
 let g:CommandTMaxHeight=20
 
 " ZoomWin configuration
