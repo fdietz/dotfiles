@@ -262,8 +262,8 @@ map <Leader>r :Rake<CR>
 map <Leader>R :.Rake<CR>
 
 " map control left and control right to swap the buffer
-" map <C-A-right> <ESC>:bn<CR>
-" map <C-A-left> <ESC>:bp<CR>
+map <C-A-right> <ESC>:bn<CR>
+map <C-A-left> <ESC>:bp<CR>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
