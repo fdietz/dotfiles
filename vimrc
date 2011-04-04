@@ -40,7 +40,11 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,test/fixtures/*,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn
+" Ignore Rails specific files and paths
+set wildignore+=test/fixtures/**,vendor/rails/**,tmp/**
+" ignore xing rails specific files and paths
+set wildignore+=gems/**,engines/perl_backend/test/stub_data/**
 
 " Status bar
 set laststatus=2
