@@ -226,9 +226,13 @@ set guioptions=aAce
 " font
 set gfn=Monaco:h13
 
-" nnoremap <silent> <C-n> :tabnext<CR>
-" nnoremap <silent> <C-p> :tabprevious<CR>
+" map <C-A-right> <ESC>:bn<CR>
+" map <C-A-left> <ESC>:bp<CR>
+
+nnoremap <silent> <C-A-right> :tabnext<CR>
+nnoremap <silent> <C-A-left> :tabprevious<CR>
 " nnoremap <silent> <C-t> :tabnew<CR>
+
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))
