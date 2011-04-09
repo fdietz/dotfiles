@@ -5,4 +5,6 @@ export ARCHFLAGS="-arch x86_64"
 export SSH_ASKPASS="macos-askpass"
 export DISPLAY=":0"
 
-export EDITOR=mate
+#export EDITOR=mate
+
+export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
