@@ -144,9 +144,6 @@ let g:gist_open_browser_after_post = 1
 set modeline
 set modelines=10
 
-" Default color scheme
-color desert
-
 " Directories for swp files
 set backup
 set backupdir=$HOME/.vim/backup/
