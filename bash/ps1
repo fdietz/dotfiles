@@ -32,9 +32,9 @@ ps1_titlebar()
 ps1_identity()
 {
   if [[ $UID -eq 0 ]] ; then
-    printf "%s" "\[\033[31m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\] "
+    printf "%s" "\[\033[0m\]\\u\[\033[0m\]@\[\033[0m\]\\h\[\033[0m\]:\w\[\033[0m\] "
   else
-    printf "%s" "\[\033[32m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\] "
+    printf "%s" "\[\033[0m\]\\u\[\033[0m\]@\[\033[0m\]\\h\[\033[0m\]:\w\[\033[0m\] "
   fi
 }
 
@@ -76,7 +76,7 @@ ps1_git()
   esac
 
   if [[ $color -gt 0 ]] ; then
-    printf "\[\033[${attr}${color}m\](git ${branch}$(ps1_git_status) $sha1)\[\033[0m\] "
+    printf "\[\033[${attr}${color}m\][git ${branch}$(ps1_git_status) $sha1]\[\033[0m\] "
   fi
 }
 
@@ -135,9 +135,9 @@ ps1_update()
   done
 
   if [[ $notime -gt 0 ]] ; then
-    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${prompt_char} "
+    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${Red}${prompt_char}${Color_Off} "
   else
-    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${prompt_char} "
+    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${Red}${prompt_char}${Color_Off} "
   fi
 }
 
