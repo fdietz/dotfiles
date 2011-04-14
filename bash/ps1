@@ -92,7 +92,7 @@ ps1_git_status()
 ps1_rvm()
 {
   if command -v rvm-prompt >/dev/null 2>/dev/null ; then
-    printf " $(rvm-prompt) "
+    printf " ${Green}$(rvm-prompt) "
   fi
 }
 
