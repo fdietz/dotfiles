@@ -3,35 +3,40 @@
 #
 # From: https://github.com/wayneeseguin/rvm/blob/master/contrib/ps1_functions
 #
+#
 # Source this file in your ~/.bash_profile or interactive startup file.
 # This is done like so:
 #
-# [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] &&
-# source "$HOME/.rvm/contrib/ps1_functions"
+#    [[ -s "$HOME/.rvm/contrib/ps1_functions" ]] &&
+#      source "$HOME/.rvm/contrib/ps1_functions"
 #
 # Then in order to set your prompt you simply do the following for example
 #
 # Examples:
 #
-# ps1_set --prompt ∫
+#   ps1_set --prompt ∫
 #
-# or
+#   or
 #
-# ps1_set --prompt ∴
+#   ps1_set --prompt ∴
 #
 # This will yield a prompt like the following, for example,
 #
-# 00:00:50 wayneeseguin@GeniusAir:~/projects/db0/rvm/rvm (git:master:156d0b4) ruby-1.8.7-p334@rvm
+# 00:00:50 wayneeseguin@GeniusAir:~/projects/db0/rvm/rvm  (git:master:156d0b4)  ruby-1.8.7-p334@rvm
 # ∴
 #
 ps1_titlebar()
 {
-  case $TERM in (xterm*|rxvt*) printf '\[\e]0;\u@\h: \W\007\]' ;; esac
+  case $TERM in
+    (xterm*|rxvt*)
+      printf "%s" "\033]0;\\u@\\h: \W\\007"
+      ;;
+  esac
 }
 
 ps1_identity()
 {
-  if [[ $UID -eq 0 ]] ; then
+  if (( $UID == 0 )) ; then
     printf "%s" "\[\033[0m\]\\u\[\033[0m\]@\[\033[0m\]\\h\[\033[0m\]:\w\[\033[0m\] "
   else
     printf "%s" "\[\033[0m\]\\u\[\033[0m\]@\[\033[0m\]\\h\[\033[0m\]:\w\[\033[0m\] "
@@ -44,28 +49,26 @@ ps1_git()
 
   shopt -s extglob # Important, for our nice matchers :)
 
-  if ! command -v git >/dev/null 2>&1 ; then
+  command -v git >/dev/null 2>&1 || {
     printf " \033[1;37m\033[41m[git not found]\033[m "
     return 0
-  fi
+  }
 
   branch=$(git symbolic-ref -q HEAD 2>/dev/null)
-  if [[ $? -gt 0 ]] ; then
-    return 0 # Not in a git repo, no need to continue.
-  fi
+
+  (( $? > 0 )) && return 0 # Not in a git repo, no need to continue.
+
   branch=${branch##refs/heads/}
 
   # Now we display the branch.
-  sha1=($(git log --no-color -1 2>/dev/null))
-  sha1=${sha1[1]}
-  sha1=${sha1:0:7}
+  sha1=$(git rev-parse --short --quiet HEAD)
 
   case "${branch:-"(no branch)"}" in
    production|prod) attr="1;37m\033[" ; color=41 ;; # red
-   master|deploy) color=31 ;; # red
-   stage|staging) color=33 ;; # yellow
-   dev|development) color=34 ;; # blue
-   next) color=36 ;; # gray
+   master|deploy)   color=31                     ;; # red
+   stage|staging)   color=33                     ;; # yellow
+   dev|development) color=34                     ;; # blue
+   next)            color=36                     ;; # gray
    *)
      if [[ -n "${branch}" ]] ; then # Feature Branch :)
        color=32 # green
@@ -75,43 +78,36 @@ ps1_git()
      ;;
   esac
 
-  if [[ $color -gt 0 ]] ; then
-    printf "\[\033[${attr}${color}m\][git ${branch}$(ps1_git_status) $sha1]\[\033[0m\] "
-  fi
+  [[ $color -gt 0 ]] &&
+    printf "\[\033[${attr}${color}m\][git:${branch}$(ps1_git_status):$sha1]\[\033[0m\] "
 }
 
 ps1_git_status()
 {
   local git_status="$(git status 2>/dev/null)"
 
-  case "${git_status}" in (*deleted:*) printf "%s" "-" ;; esac
-  case "${git_status}" in (*Untracked[[:space:]]files:*) printf "%s" "+" ;; esac
-  case "${git_status}" in (*modified:*) printf "%s" "*" ;; esac
+  [[ "${git_status}" = *deleted* ]]                    && printf "%s" "-"
+  [[ "${git_status}" = *Untracked[[:space:]]files:* ]] && printf "%s" "+"
+  [[ "${git_status}" = *modified:* ]]                  && printf "%s" "*"
 }
 
 ps1_rvm()
 {
-  if command -v rvm-prompt >/dev/null 2>/dev/null ; then
-    printf " ${Green}$(rvm-prompt) "
-  fi
+  command -v rvm-prompt >/dev/null 2>&1 && printf "%s" " \[\033[32m\]$(rvm-prompt) "
 }
 
 ps1_update()
 {
-  local prompt_char='$'
-  local separator="\n"
-  local notime=0
+  local prompt_char='$' separator="\n" notime=0
 
-  if [[ $UID -eq 0 ]] ; then
-    prompt_char='#'
-  fi
+  (( $UID == 0 )) && prompt_char='#'
 
   while [[ $# -gt 0 ]] ; do
     local token="$1" ; shift
 
     case "$token" in
       --trace)
-        export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()} \${LINENO} > "
+        export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()}  \${LINENO} > "
         set -o xtrace
         ;;
       --prompt)
@@ -134,26 +130,26 @@ ps1_update()
     esac
   done
 
-  if [[ $notime -gt 0 ]] ; then
-    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${Red}${prompt_char}${Color_Off} "
+  if (( notime > 0 )) ; then
+    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}\[\033[31m\]${prompt_char}\[\033[0m\] "
   else
-    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${Red}${prompt_char}${Color_Off} "
+    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}[\033[31m\]${prompt_char}\[\033[0m\] "
   fi
 }
 
 ps2_set()
 {
-  PS2=" \[\033[0;40m\]\[\033[0;33m\]> \[\033[1;37m\]\[\033[1m\]"
+  PS2="  \[\033[0;40m\]\[\033[0;33m\]> \[\033[1;37m\]\[\033[1m\]"
 }
 
 ps4_set()
 {
-  export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()} \${LINENO} > "
+  export PS4="+ \${BASH_SOURCE##\${rvm_path:-}} : \${FUNCNAME[0]:+\${FUNCNAME[0]}()}  \${LINENO} > "
 }
 
-# WARNING: This clobbers your PROMPT_COMMAND so if you need to write your own, call
-# ps1_update within your PROMPT_COMMAND with the same arguments you pass
-# to ps1_set
+# WARNING:  This clobbers your PROMPT_COMMAND so if you need to write your own, call
+#           ps1_update within your PROMPT_COMMAND with the same arguments you pass
+#           to ps1_set
 #
 # The PROMPT_COMMAND is used to help the prompt work if the separator is not a new line.
 # In the event that the separtor is not a new line, the prompt line may become distored if
