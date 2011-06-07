@@ -58,7 +58,7 @@ set noequalalways
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 " NERDTreeFind - navigates nerdtree to the current file
 map <Leader>N :NERDTreeFind<CR>
 
