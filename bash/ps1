@@ -93,7 +93,7 @@ ps1_git_status()
 
 ps1_rvm()
 {
-  command -v rvm-prompt >/dev/null 2>&1 && printf "%s" " \[\033[32m\]$(rvm-prompt) "
+  command -v rvm-prompt >/dev/null 2>&1 && printf "%s" " \[\033[32m\]$(rvm-prompt)\[\033[0m\] "
 }
 
 ps1_update()
@@ -130,11 +130,18 @@ ps1_update()
     esac
   done
 
+  # if (( notime > 0 )) ; then
+  #   PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}\[\033[31m\]${prompt_char}\[\033[0m\] "
+  # else
+  #   PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}[\033[31m\]${prompt_char}\[\033[0m\] "
+  # fi
+  
   if (( notime > 0 )) ; then
-    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}\[\033[31m\]${prompt_char}\[\033[0m\] "
+    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${prompt_char} "
   else
-    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}[\033[31m\]${prompt_char}\[\033[0m\] "
+    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rvm)${separator}${prompt_char} "
   fi
+  
 }
 
 ps2_set()
