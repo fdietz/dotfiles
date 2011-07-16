@@ -97,6 +97,14 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+"for just following the link
+"nmap <buffer> <Enter> <C-]>
+"nnoremp <Enter> <C-]>
+"nnoremp t <C-]>
+
+"for following the help topic in a new split (often useful)
+"nmap <buffer> <C-Enter> <C-w><C-]><C-w>T
+
 
 " Remember last location in file
 if has("autocmd")
@@ -292,6 +300,11 @@ map <Leader>R :.Rake<CR>
 " map control left and control right to swap the buffer
 " map <C-A-right> <ESC>:bn<CR>
 " map <C-A-left> <ESC>:bp<CR>
+
+" toggle comments
+vmap <D-/> ,c<space>gv
+map <D-/> ,c<space>
+imap <D-/> <esc>,c<space>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
