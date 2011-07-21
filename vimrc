@@ -140,6 +140,9 @@ au FileType python  set tabstop=4 textwidth=79
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" selection exclusive
+:set selection=exclusive
+
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
 
