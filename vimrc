@@ -131,9 +131,6 @@ set backup
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/backup/
 
-" Turn off jslint errors by default
-let g:JSLintHighlightErrorLine = 0
-
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
@@ -170,10 +167,6 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-" run rails/ruby tests (rails.vim)
-map <Leader>r :Rake<CR>
-map <Leader>R :.Rake<CR>
-
 " Command-T configuration
 let g:CommandTMaxHeight=20
 " Cmd-T should open file in your tab by default
@@ -182,8 +175,43 @@ let g:CommandTAcceptSelectionTabMap = '<CR>'
 " Cmd-T should open window at top
 let g:CommandTMatchWindowAtTop = 1 
 
+" run rails/ruby tests (rails.vim)
+map <Leader>r :Rake<CR>
+map <Leader>R :.Rake<CR>
+
+" Rubytest.vim
+let g:rubytest_in_quickfix = 0
+let g:rubytest_cmd_test = "ruby %p"
+let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
+map <Leader>R <Plug>RubyTestRun
+map <Leader>r <Plug>RubyFileRun
+"map <Leader>/ <Plug>RubyTestRunLast
+   
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+" ========= custom functions
+
+" open uri found in current line with osx open command
+ruby << EOF
+  def open_uri
+    re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
+
+    line = VIM::Buffer.current.line
+
+    if url = line[re]
+      system("open", url)
+      VIM::message(url)
+    else
+      VIM::message("No URI found in line.")
+    end
+  end
+EOF
+
+if !exists("*OpenURI")
+  function! OpenURI()
+    :ruby open_uri
+  endfunction
+endif

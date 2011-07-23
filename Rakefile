@@ -12,7 +12,6 @@ git_bundles = [
   "git://github.com/tpope/vim-haml.git",
   "git://github.com/michaeljsmith/vim-indent-object.git",
   "git://github.com/pangloss/vim-javascript.git",
-  "git://github.com/hallettj/jslint.vim.git",
   "git://github.com/ddollar/nerdcommenter.git",
   "git://github.com/tpope/vim-surround.git",
   "git://github.com/vim-scripts/taglist.vim.git",
