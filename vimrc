@@ -12,6 +12,8 @@ filetype off
 
 " set <Leader> to ","
 let mapleader = ","
+" <Leader> timeout 
+set timeoutlen=500
 
 filetype on
 filetype plugin on
@@ -30,7 +32,6 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-"set list listchars=tab:\ \ ,trail:·
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -40,71 +41,26 @@ set incsearch
 set ignorecase
 set smartcase
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" selection exclusive
+:set selection=exclusive
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
+
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn
-" Ignore Rails specific files and paths
-set wildignore+=test/fixtures/**,vendor/rails/**,tmp/**
-" ignore xing rails specific files and paths
-set wildignore+=gems/**,engines/perl_backend/test/stub_data/**
 
 " Status bar
 set laststatus=2
 
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
-
-" NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-" NERDTreeFind - navigates nerdtree to the current file
-map <Leader>N :NERDTreeFind<CR>
-
-" NerdTree {
-		map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-		map <leader>e :NERDTreeFind<CR>
-		nmap <leader>nt :NERDTreeFind<CR>
-
-		let NERDTreeShowBookmarks=1
-		let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-		let NERDTreeChDirMode=0
-		let NERDTreeQuitOnOpen=1
-		let NERDTreeShowHidden=1
-		let NERDTreeKeepTreeInNewTab=1
-	" }
-	
-function! NERDTreeInitAsNeeded()
-    redir => bufoutput
-    buffers!
-    redir END
-    let idx = stridx(bufoutput, "NERD_tree")
-    if idx > -1
-        NERDTreeMirror
-        NERDTreeFind
-        wincmd l
-    endif
-endfunction
-
-" Command-T configuration
-
-let g:CommandTMaxHeight=20
-
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
-
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
-"for just following the link
-"nmap <buffer> <Enter> <C-]>
-"nnoremp <Enter> <C-]>
-"nnoremp t <C-]>
-
-"for following the help topic in a new split (often useful)
-"nmap <buffer> <C-Enter> <C-w><C-]><C-w>T
-
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
 " Remember last location in file
 if has("autocmd")
@@ -137,26 +93,9 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set tabstop=4 textwidth=79
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" selection exclusive
-:set selection=exclusive
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+" Use modeline overrides
+set modeline
+set modelines=10
 
 " Unimpaired configuration
 " Bubble single lines
@@ -166,22 +105,26 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" toggle comments
+vmap <D-/> ,c<space>gv
+map <D-/> ,c<space>
+imap <D-/> <esc>,c<space>
+
+" indent in visual and insert mode
+vmap > >gv
+vmap < <gv
+
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
-
-" gist-vim defaults
-if has("mac")
-  let g:gist_clip_command = 'pbcopy'
-elseif has("unix")
-  let g:gist_clip_command = 'xclip -selection clipboard'
-endif
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-
-" Use modeline overrides
-set modeline
-set modelines=10
 
 " Directories for swp files
 set backup
@@ -190,9 +133,6 @@ set directory=$HOME/.vim/backup/
 
 " Turn off jslint errors by default
 let g:JSLintHighlightErrorLine = 0
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
@@ -211,58 +151,9 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 " default color scheme
 color ir_black
 
-" hide toolbar
-set guioptions-=T
-
-" hide menu
-set guioptions-=m
-
-" hide right scrollbar
-set guioptions-=r
-
-" hide left scrollbar
-set guioptions-=l
-
-" hide left scrollbar when using multiple buffers
-set guioptions-=L
-
-" color scheme changer
-nmap <silent> <Leader>1 :colorscheme desert<CR>
-nmap <silent> <Leader>2 :colorscheme twilight<CR>
-nmap <silent> <Leader>3 :colorscheme xoria256<CR>
-nmap <silent> <Leader>4 :colorscheme ir_black<CR>
-nmap <silent> <Leader>5 :colorscheme mustang<CR>
-
 " open current file with Firefox, Google Chrome, Safari
 map <silent> <Leader>firefox :! open -a firefox.app %:p<CR>
 map <silent> <Leader>chrome :! open -a google\ chrome.app %:p<CR>
-
-" quickly switch buffers
-map <Leader>j :b#<CR>
-
-" change to ~/Desktop directory
-nmap <Leader>d :cd ~/Desktop<CR>:e.<CR>
-
-" space instead of esc to enter command line
-nmap <space> :
-
-" get out of INSERT mode with jj
-inoremap jj <ESC>
-cnoremap jj <ESC>
-
-" indent in visual and insert mode
-vmap > >gv
-vmap < <gv
-
-" indent with tab and shift-tag in visual mode
-vmap <Tab> >gv
-vmap <S-Tab> <gv
-
-" ctags.vim
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-
-" ,w will easily switch window focus
-map <leader>w <C-w>w
 
 " Clean up the trailing spaces
 map <Leader>I :call Preserve("normal gg=G")<CR>:call Preserve("%s/\\s\\+$//e")<CR>
@@ -279,35 +170,17 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-" <Leader> timeout 
-set timeoutlen=500
-
-" settings for VimClojure
-let g:vimclojure#HighlightBuiltins=1   " Highlight Clojure's builtins
-let g:vimclojure#ParenRainbow=1        " Rainbow parentheses'!
-let g:vimclojure#DynamicHighlighting=1 " Dynamically highlight functions
-"let vimclojure#NailgunClient="/Users/hinmanm/bin/ng" " Nailgun location
-"let vimclojure#WantNailgun=1
-"let vimclojure#SplitPos = "right"
-
-" Leader shortcuts for Rails commands
-map <Leader>m :Rmodel
-map <Leader>c :Rcontroller
-map <Leader>v :Rview
-map <Leader>u :Runittest
-map <Leader>f :Rfunctionaltest
-
+" run rails/ruby tests (rails.vim)
 map <Leader>r :Rake<CR>
 map <Leader>R :.Rake<CR>
 
-" map control left and control right to swap the buffer
-" map <C-A-right> <ESC>:bn<CR>
-" map <C-A-left> <ESC>:bp<CR>
-
-" toggle comments
-vmap <D-/> ,c<space>gv
-map <D-/> ,c<space>
-imap <D-/> <esc>,c<space>
+" Command-T configuration
+let g:CommandTMaxHeight=20
+" Cmd-T should open file in your tab by default
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
+" Cmd-T should open window at top
+let g:CommandTMatchWindowAtTop = 1 
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
