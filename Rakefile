@@ -14,17 +14,13 @@ git_bundles = [
   "git://github.com/pangloss/vim-javascript.git",
   "git://github.com/hallettj/jslint.vim.git",
   "git://github.com/robgleeson/vim-markdown-preview.git",
-  "git://github.com/wycats/nerdtree.git",
   "git://github.com/ddollar/nerdcommenter.git",
   "git://github.com/tpope/vim-surround.git",
   "git://github.com/vim-scripts/taglist.vim.git",
-  "git://github.com/tpope/vim-vividchalk.git",
   "git://github.com/ervandew/supertab.git",
-  "git://github.com/tpope/vim-cucumber.git",
   "git://github.com/timcharper/textile.vim.git",
   "git://github.com/tpope/vim-rails.git",
   "git://github.com/taq/vim-rspec.git",
-  "git://github.com/vim-scripts/ZoomWin.git",
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/tpope/vim-markdown.git",
   "git://github.com/tsaleh/vim-align.git",
@@ -34,12 +30,12 @@ git_bundles = [
   "git://github.com/wgibbs/vim-irblack.git",
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/scrooloose/syntastic.git",
-  "git://github.com/ajf/puppet-vim.git",
   "git://github.com/bdd/vim-scala.git",
   "git://github.com/mattn/gist-vim.git",
   "git://github.com/vim-scripts/VimClojure.git",
   "git://github.com/wincent/Command-T.git",
-  "git://github.com/corntrace/bufexplorer.git"
+  "git://github.com/corntrace/bufexplorer.git",
+  "git://github.com/janx/vim-rubytest.git"
 ]
 
 desc "install the dot files into user's home directory"
