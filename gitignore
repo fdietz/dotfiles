@@ -2,3 +2,5 @@
 .svn
 *~
 .*.swp
+vim/bundle
+vim/backup
