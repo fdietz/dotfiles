@@ -2,8 +2,8 @@
 export ARCHFLAGS="-arch x86_64"
 
 # ssh-askpass
-export SSH_ASKPASS="macos-askpass"
-export DISPLAY=":0"
+# export SSH_ASKPASS="macos-askpass"
+# export DISPLAY=":0"
 
 #export EDITOR=mate
 
