@@ -171,8 +171,8 @@ function! Preserve(command)
 endfunction
 
 " run rails/ruby tests (rails.vim)
-map <Leader>r :Rake<CR>
-map <Leader>R :.Rake<CR>
+"map <Leader>r :Rake<CR>
+"map <Leader>R :.Rake<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
@@ -181,6 +181,14 @@ let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 " Cmd-T should open window at top
 let g:CommandTMatchWindowAtTop = 1 
+
+" vim-rubytest
+"let g:rubytest_cmd_test = "ruby %p"
+let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
+let g:rubytest_cmd_spec = "spec -f specdoc %p"
+map <Leader>t <Plug>RubyTestRun
+map <Leader>T <Plug>RubyFileRun
+map <Leader>l <Plug>RubyTestRunLast
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
