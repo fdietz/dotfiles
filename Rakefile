@@ -17,7 +17,9 @@ git_bundles = [
   "git://github.com/vim-scripts/taglist.vim.git",
   "git://github.com/ervandew/supertab.git",
   "git://github.com/timcharper/textile.vim.git",
+  "git://github.com/tpope/vim-rake.git",
   "git://github.com/tpope/vim-rails.git",
+  "git://github.com/tpope/vim-bundler.git",
   "git://github.com/taq/vim-rspec.git",
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/tsaleh/vim-align.git",
@@ -32,7 +34,9 @@ git_bundles = [
   "git://github.com/vim-scripts/VimClojure.git",
   "git://github.com/wincent/Command-T.git",
   "git://github.com/corntrace/bufexplorer.git",
-  "git://github.com/janx/vim-rubytest.git"
+  "git://github.com/janx/vim-rubytest.git",
+  "git://github.com/greyblake/vim-preview.git",
+  "git://github.com/altercation/vim-colors-solarized.git"
 ]
 
 desc "install the dot files into user's home directory"

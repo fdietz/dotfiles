@@ -147,6 +147,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " default color scheme
 color ir_black
+"set background=light
+"colorscheme solarized
 
 " open current file with Firefox, Google Chrome, Safari
 map <silent> <Leader>firefox :! open -a firefox.app %:p<CR>
@@ -192,6 +194,12 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+" bind command-/ to toggle comment
+" requires NERD Commenter to be installed: http://www.vim.org/scripts/script.php?script_id=1218
+nmap <D-/> ,c<space>
+vmap <D-/> ,c<space>
+imap <D-/> <C-O>,c<space>
+ 
 " ========= custom functions
 
 " open uri found in current line with osx open command
