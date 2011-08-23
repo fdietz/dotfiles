@@ -22,10 +22,17 @@ set lazyredraw                " don't redraw when don't have to
 set showmode
 set showcmd
 
-set autoindent smartindent    " auto/smart indent
-set smarttab                  " tab and backspace are smart
-set tabstop=2                 " 6 spaces
-set shiftwidth=2
+" indents and tabs
+set autoindent                  " set the cursor at same indent as line above
+set smartindent                 " try to be smart about indenting (C-style)
+set expandtab                   " expand <Tab>s with spaces; death to tabs!
+set shiftwidth=2                " spaces for each step of (auto)indent
+set softtabstop=2               " set virtual tab stop (compat for 8-wide tabs)
+set tabstop=8                   " for proper display of files with tabs
+set shiftround                  " always round indents to multiple of shiftwidth
+set copyindent                  " use existing indents for new indents
+set preserveindent              " save as much indent structure as possible
+filetype plugin indent on       " load filetype plugins and indent settings
 
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
@@ -78,6 +85,8 @@ color ir_black
 " Don't beep
 set visualbell
 
+" show invisible characters
+set list
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
