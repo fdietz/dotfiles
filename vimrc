@@ -10,6 +10,7 @@ call pathogen#runtime_append_all_bundles()
 " call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundle'))
 call pathogen#helptags()
 
+set encoding=utf-8 fileencoding=utf-8
 syntax on
 set background=dark
 set ruler                     " show the line number on the bar
