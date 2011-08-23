@@ -1,28 +1,46 @@
 if has("gui_macvim")
+
+  " *************************** gui options
+  "
+  
+  " hide scrollbar, hide toolbar
+  set guioptions=aAce
+
+  " font
+  set gfn=Monaco:h13
+
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
+    
+  " hide toolbar
+  set guioptions-=T
 
+  " hide menu
+  set guioptions-=m
+
+  " hide right scrollbar
+  set guioptions-=r
+
+  " hide left scrollbar
+  set guioptions-=l
+
+  " hide left scrollbar when using multiple buffers
+  set guioptions-=L
+  
+  " **************************** mappings
+  "
+  
+  " Command-Return for fullscreen
+  macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
+    
+  " Command-Shift-F for Ack
+  map <D-F> :Ack<space>
+  
   " Command-T for CommandT
   macmenu &File.New\ Tab key=<D-T>
   map <D-t> :CommandT<CR>
   imap <D-t> <Esc>:CommandT<CR>
-
-  " Command-Return for fullscreen
-  macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
-
-  " Command-Shift-F for Ack
-  map <D-F> :Ack<space>
-
-  " Command-e for ConqueTerm
-  map <D-e> :call StartTerm()<CR>
-
-  " Command-/ to toggle comments
-  map <D-/> <plug>NERDCommenterToggle<CR>
-
-  " Command-][ to increase/decrease indentation
-  vmap <D-]> >gv
-  vmap <D-[> <gv
-
+  
   " Map Command-# to switch tabs
   map  <D-0> 0gt
   imap <D-0> <Esc>0gt
@@ -45,56 +63,12 @@ if has("gui_macvim")
   map  <D-9> 9gt
   imap <D-9> <Esc>9gt
 
-  " Command-Option-ArrowKey to switch viewports
-  map <C-M-Up> <C-w>k
-  imap <C-M-Up> <Esc> <C-w>k
-  map <C-M-Down> <C-w>j
-  imap <C-M-Down> <Esc> <C-w>j
-  map <C-M-Right> <C-w>l
-  imap <C-M-Right> <Esc> <C-w>l
-  map <C-M-Left> <C-w>h
-  imap <C-M-Left> <C-w>h
-
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
-  imap <Leader>= <Esc> <C-w>=
-endif
-
-" hide toolbar
-set guioptions-=T
-
-" hide menu
-set guioptions-=m
-
-" hide right scrollbar
-set guioptions-=r
-
-" hide left scrollbar
-set guioptions-=l
-
-" hide left scrollbar when using multiple buffers
-set guioptions-=L
-
-" ConqueTerm wrapper
-function StartTerm()
-  execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \ 
-endfunction
-
-" hide scrollbar, hide toolbar
-set guioptions=aAce
-
-" font
-set gfn=Monaco:h13
-
-" Don't beep
-set visualbell
-
-map <silent> <D-A-right> :tabnext<CR>
-map <silent> <D-A-left> :tabprevious<CR>
+  map <silent> <D-A-right> :tabnext<CR>
+  map <silent> <D-A-left> :tabprevious<CR>
+  
+end
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))
   source ~/.gvimrc.local
 endif
-
