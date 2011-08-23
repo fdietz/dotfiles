@@ -40,7 +40,7 @@ set sidescrolloff=5           " keep at least 5 lines left/right
 set history=200
 set backspace=indent,eol,start
 set linebreak
-"set cmdheight=2               " command line two lines high
+set cmdheight=2               " command line two lines high
 set undolevels=1000           " 1000 undos
 set updatecount=100           " switch every 100 chars
 set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
@@ -49,13 +49,10 @@ set noerrorbells              " No error bells please
 set shell=bash
 set fileformats=unix
 set ff=unix
+
 filetype on                   " Enable filetype detection
 filetype indent on            " Enable filetype-specific indenting
 filetype plugin on            " Enable filetype-specific plugins
-
-set wildmode=longest:full
-set wildmenu                  " menu has tab completion
-let maplocalleader=','        " all my macros start with ,
 
 " searching
 set incsearch                 " incremental search
