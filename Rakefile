@@ -4,35 +4,48 @@ require 'fileutils'
 require 'open-uri'
 
 git_bundles = [
+  "git://github.com/tpope/vim-rake.git",
+  "git://github.com/tpope/vim-rails.git",
+  "git://github.com/tpope/vim-bundler.git",
+  
+  "git://github.com/wgibbs/vim-irblack.git",
+  
   "git://github.com/mileszs/ack.vim.git",
-  "git://github.com/vim-scripts/Color-Sampler-Pack.git",
-  "http://conque.googlecode.com/files/conque_1.1.tar.gz",
+  "git://github.com/wincent/Command-T.git",
+
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/tpope/vim-git.git",
-  "git://github.com/tpope/vim-haml.git",
-  "git://github.com/michaeljsmith/vim-indent-object.git",
-  "git://github.com/pangloss/vim-javascript.git",
-  "git://github.com/ddollar/nerdcommenter.git",
-  "git://github.com/tpope/vim-surround.git",
-  "git://github.com/vim-scripts/taglist.vim.git",
-  "git://github.com/ervandew/supertab.git",
-  "git://github.com/timcharper/textile.vim.git",
-  "git://github.com/tpope/vim-rails.git",
-  "git://github.com/taq/vim-rspec.git",
-  "git://github.com/msanders/snipmate.vim.git",
-  "git://github.com/tsaleh/vim-align.git",
-  "git://github.com/tpope/vim-unimpaired.git",
-  "git://github.com/vim-scripts/searchfold.vim.git",
-  "git://github.com/tpope/vim-endwise.git",
-  "git://github.com/wgibbs/vim-irblack.git",
-  "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/scrooloose/syntastic.git",
-  "git://github.com/bdd/vim-scala.git",
-  "git://github.com/mattn/gist-vim.git",
-  "git://github.com/vim-scripts/VimClojure.git",
-  "git://github.com/wincent/Command-T.git",
-  "git://github.com/corntrace/bufexplorer.git",
-  "git://github.com/janx/vim-rubytest.git"
+  
+  "git://github.com/vim-scripts/taglist.vim.git",
+  
+  # "git://github.com/vim-scripts/Color-Sampler-Pack.git",
+  # "http://conque.googlecode.com/files/conque_1.1.tar.gz",
+  # "git://github.com/tpope/vim-haml.git",
+  # "git://github.com/michaeljsmith/vim-indent-object.git",
+  # "git://github.com/pangloss/vim-javascript.git",
+  # "git://github.com/ddollar/nerdcommenter.git",
+  # "git://github.com/tpope/vim-surround.git",
+  
+  # "git://github.com/ervandew/supertab.git",
+  # "git://github.com/timcharper/textile.vim.git",
+  # "git://github.com/taq/vim-rspec.git",
+  # "git://github.com/msanders/snipmate.vim.git",
+  # "git://github.com/tsaleh/vim-align.git",
+  # "git://github.com/tpope/vim-unimpaired.git",
+  # "git://github.com/vim-scripts/searchfold.vim.git",
+  # "git://github.com/tpope/vim-endwise.git",
+  
+  # "git://github.com/kchmck/vim-coffee-script.git",
+  
+  # "git://github.com/bdd/vim-scala.git",
+  # "git://github.com/mattn/gist-vim.git",
+  # "git://github.com/vim-scripts/VimClojure.git",
+  
+  # "git://github.com/corntrace/bufexplorer.git",
+  # "git://github.com/janx/vim-rubytest.git",
+  # "git://github.com/greyblake/vim-preview.git",
+  # "git://github.com/altercation/vim-colors-solarized.git"
 ]
 
 desc "install the dot files into user's home directory"

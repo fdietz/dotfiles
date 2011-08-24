@@ -1,48 +1,92 @@
 " mode not vi compatible
 set nocompatible
 
+" ********************** pathogen
+"
+
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
 runtime! ~/.vim/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
 " call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundle'))
 call pathogen#helptags()
 
-" On some Linux systems, this is necessary to make sure pathogen picks up ftdetect directories in plugins
-filetype off
-
-" set <Leader> to ","
-let mapleader = ","
-" <Leader> timeout 
-set timeoutlen=500
-
-filetype on
-filetype plugin on
-filetype indent on
-
-set number
-set ruler
+set encoding=utf-8 fileencoding=utf-8
 syntax on
+set background=dark
+set ruler                     " show the line number on the bar
+set more                      " use more prompt
+set autoread                  " watch for file changes
+set number                    " line numbers
+set hidden
+set noautowrite               " don't automagically write on :next
+set lazyredraw                " don't redraw when don't have to
+set showmode
+set showcmd
 
-" Set encoding
-set encoding=utf-8
+" indents and tabs
+set autoindent                  " set the cursor at same indent as line above
+set smartindent                 " try to be smart about indenting (C-style)
+set expandtab                   " expand <Tab>s with spaces; death to tabs!
+set shiftwidth=2                " spaces for each step of (auto)indent
+set softtabstop=2               " set virtual tab stop (compat for 8-wide tabs)
+set tabstop=8                   " for proper display of files with tabs
+set shiftround                  " always round indents to multiple of shiftwidth
+set copyindent                  " use existing indents for new indents
+set preserveindent              " save as much indent structure as possible
+filetype plugin indent on       " load filetype plugins and indent settings
 
-" Whitespace stuff
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set scrolloff=5               " keep at least 5 lines above/below
+set sidescrolloff=5           " keep at least 5 lines left/right
+set history=200
+set backspace=indent,eol,start
+set linebreak
+set cmdheight=2               " command line two lines high
+set undolevels=1000           " 1000 undos
+set updatecount=100           " switch every 100 chars
+set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
+set ttyfast                   " we have a fast terminal
+set noerrorbells              " No error bells please
+set shell=bash
+set fileformats=unix
+set ff=unix
+
+filetype on                   " Enable filetype detection
+filetype indent on            " Enable filetype-specific indenting
+filetype plugin on            " Enable filetype-specific plugins
+
+" searching
+set incsearch                 " incremental search
+set ignorecase                " search ignoring case
+set hlsearch                  " highlight the search
+set showmatch                 " show matching bracket
+set diffopt=filler,iwhite     " ignore all whitespace and sync
+
+" Directories for swp files
+set backup
+set backupdir=$HOME/.vim/backup/
+set directory=$HOME/.vim/backup/
+
+" ********************** look and feel
+"
+
+" cursor look and feel
+set guicursor=n-v-c:block-Cursor-blinkon0
+set guicursor+=ve:ver35-Cursor
+set guicursor+=o:hor50-Cursor
+set guicursor+=i-ci:ver25-Cursor
+set guicursor+=r-cr:hor20-Cursor
+set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
+" default color scheme
+color ir_black
+
+" Don't beep
+set visualbell
+
+" show invisible characters
+set list
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
-
-" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 
 " selection exclusive
 :set selection=exclusive
@@ -50,65 +94,67 @@ set backspace=indent,eol,start
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn
-
-" Status bar
-set laststatus=2
-
-" CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
-
-function s:setupWrapping()
-  set wrap
-  set wm=2
-  set textwidth=72
-endfunction
-
-function s:setupMarkup()
-  call s:setupWrapping()
-  map <buffer> <Leader>p :Mm <CR>
-endfunction
-
-" make uses real tabs
-au FileType make                                     set noexpandtab
-
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
-au BufRead,BufNewFile *.txt call s:setupWrapping()
+" ********************** status line
+"
+set laststatus=2
+if has('statusline')
+        " Status line detail: (from Rafael Garcia-Suarez)
+        " %f		file path
+        " %y		file type between braces (if defined)
+        " %([%R%M]%)	read-only, modified and modifiable flags between braces
+        " %{'!'[&ff=='default_file_format']}
+        "			shows a '!' if the file format is not the platform
+        "			default
+        " %{'$'[!&list]}	shows a '*' if in list mode
+        " %{'~'[&pm=='']}	shows a '~' if in patchmode
+        " (%{synIDattr(synID(line('.'),col('.'),0),'name')})
+        "			only for debug : display the current syntax item name
+        " %=		right-align following items
+        " #%n		buffer number
+        " %l/%L,%c%V	line number, total number of lines, and column number
+        "function! SetStatusLineStyle()
+        "        if &stl == '' || &stl =~ 'synID'
+        "                let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}" .
+        "                                        \"%{'~'[&pm=='']}"                     .
+        "                                        \"%=#%n %l/%L,%c%V "                   .
+        "                                        \"git:%{call GitBranch()}"
+        "        else
+        "                let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}" .
+        "                                        \" (%{synIDattr(synID(line('.'),col('.'),0),'name')})" .
+        "                                        \"%=#%n %l/%L,%c%V "
+        "        endif
+        "endfunc
+        "call SetStatusLineStyle()
 
-" make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python  set tabstop=4 textwidth=79
+        function! SetStatusLineStyle()
+                let &stl="%f %y "                       .
+                        \"%([%R%M]%)"                   .
+                        \"%#StatusLineNC#%{&ff=='unix'?'':&ff.'\ format'}%*" .
+                        \"%{'$'[!&list]}"               .
+                        \"%{'~'[&pm=='']}"              .
+                        \"%="                           .
+                        \"#%n %l/%L,%c%V "              .
+                        \""
+                 "      \"%#StatusLineNC#%{GitBranchInfoString()}%* " .
+        endfunc
+        call SetStatusLineStyle()
 
-" Use modeline overrides
-set modeline
-set modelines=10
+        if has('title')
+                set titlestring=%t%(\ [%R%M]%)
+        endif
 
-" Unimpaired configuration
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+        "highlight StatusLine    ctermfg=White ctermbg=DarkBlue cterm=bold
+        "highlight StatusLineNC  ctermfg=White ctermbg=DarkBlue cterm=NONE
+endif
 
-" toggle comments
-vmap <D-/> ,c<space>gv
-map <D-/> ,c<space>
-imap <D-/> <esc>,c<space>
+" ********************** mappings
+"
+" set <Leader> to ","
+let mapleader = ","
 
 " indent in visual and insert mode
 vmap > >gv
@@ -122,50 +168,24 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
-
-" Directories for swp files
-set backup
-set backupdir=$HOME/.vim/backup/
-set directory=$HOME/.vim/backup/
-
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
-
-" ack as grep replacement
-set grepprg=ack
-
-" cursor look and feel
-set guicursor=n-v-c:block-Cursor-blinkon0
-set guicursor+=ve:ver35-Cursor
-set guicursor+=o:hor50-Cursor
-set guicursor+=i-ci:ver25-Cursor
-set guicursor+=r-cr:hor20-Cursor
-set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-
-" default color scheme
-color ir_black
-
 " open current file with Firefox, Google Chrome, Safari
 map <silent> <Leader>firefox :! open -a firefox.app %:p<CR>
 map <silent> <Leader>chrome :! open -a google\ chrome.app %:p<CR>
 
-" Clean up the trailing spaces
-map <Leader>I :call Preserve("normal gg=G")<CR>:call Preserve("%s/\\s\\+$//e")<CR>
-" a function that preserves the state when commands are called
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
+" ********************** plugin configuration
+"
+
+" ack as grep replacement
+set grepprg=ack
+
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
+" CTags
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <C-\> :tnext<CR>
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
@@ -179,39 +199,19 @@ let g:CommandTMatchWindowAtTop = 1
 map <Leader>r :Rake<CR>
 map <Leader>R :.Rake<CR>
 
-" Rubytest.vim
-let g:rubytest_in_quickfix = 0
-let g:rubytest_cmd_test = "ruby %p"
-let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
-map <Leader>R <Plug>RubyTestRun
-map <Leader>r <Plug>RubyFileRun
-"map <Leader>/ <Plug>RubyTestRunLast
-   
+" ********************** custom functions
+"
+
+" Remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
+" **********************
+"
+
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
-endif
-
-" ========= custom functions
-
-" open uri found in current line with osx open command
-ruby << EOF
-  def open_uri
-    re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
-
-    line = VIM::Buffer.current.line
-
-    if url = line[re]
-      system("open", url)
-      VIM::message(url)
-    else
-      VIM::message("No URI found in line.")
-    end
-  end
-EOF
-
-if !exists("*OpenURI")
-  function! OpenURI()
-    :ruby open_uri
-  endfunction
 endif
