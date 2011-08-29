@@ -7,18 +7,20 @@ git_bundles = [
   "git://github.com/tpope/vim-rake.git",
   "git://github.com/tpope/vim-rails.git",
   "git://github.com/tpope/vim-bundler.git",
-  
-  "git://github.com/wgibbs/vim-irblack.git",
-  
+
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/wincent/Command-T.git",
 
+  "git://github.com/msanders/snipmate.vim.git",
+  
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/tpope/vim-git.git",
   "git://github.com/scrooloose/syntastic.git",
-  
+  "git://github.com/tpope/vim-ragtag.git",
+  # not sure about this one
   "git://github.com/vim-scripts/taglist.vim.git",
-  
+  "git://github.com/wgibbs/vim-irblack.git",
+    
   # "git://github.com/vim-scripts/Color-Sampler-Pack.git",
   # "http://conque.googlecode.com/files/conque_1.1.tar.gz",
   # "git://github.com/tpope/vim-haml.git",
