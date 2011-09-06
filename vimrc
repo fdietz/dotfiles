@@ -97,58 +97,31 @@ let macvim_hig_shift_movement = 1
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
+" Tab completion
+" set wildmode=list:longest,list:full
+" set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn
+
+" show list instead of just completing
+"set wildmenu
+" command <Tab> completion, list matches, then longest common part, then all.
+"set wildmode=list:longest,full
+
+"let g:SuperTabDefaultCompletionType = "context"
+
 
 " ********************** status line
 "
-set laststatus=2
 if has('statusline')
-        " Status line detail: (from Rafael Garcia-Suarez)
-        " %f		file path
-        " %y		file type between braces (if defined)
-        " %([%R%M]%)	read-only, modified and modifiable flags between braces
-        " %{'!'[&ff=='default_file_format']}
-        "			shows a '!' if the file format is not the platform
-        "			default
-        " %{'$'[!&list]}	shows a '*' if in list mode
-        " %{'~'[&pm=='']}	shows a '~' if in patchmode
-        " (%{synIDattr(synID(line('.'),col('.'),0),'name')})
-        "			only for debug : display the current syntax item name
-        " %=		right-align following items
-        " #%n		buffer number
-        " %l/%L,%c%V	line number, total number of lines, and column number
-        "function! SetStatusLineStyle()
-        "        if &stl == '' || &stl =~ 'synID'
-        "                let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}" .
-        "                                        \"%{'~'[&pm=='']}"                     .
-        "                                        \"%=#%n %l/%L,%c%V "                   .
-        "                                        \"git:%{call GitBranch()}"
-        "        else
-        "                let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}" .
-        "                                        \" (%{synIDattr(synID(line('.'),col('.'),0),'name')})" .
-        "                                        \"%=#%n %l/%L,%c%V "
-        "        endif
-        "endfunc
-        "call SetStatusLineStyle()
+  set laststatus=2
 
-        function! SetStatusLineStyle()
-                let &stl="%f %y "                       .
-                        \"%([%R%M]%)"                   .
-                        \"%#StatusLineNC#%{&ff=='unix'?'':&ff.'\ format'}%*" .
-                        \"%{'$'[!&list]}"               .
-                        \"%{'~'[&pm=='']}"              .
-                        \"%="                           .
-                        \"#%n %l/%L,%c%V "              .
-                        \""
-                 "      \"%#StatusLineNC#%{GitBranchInfoString()}%* " .
-        endfunc
-        call SetStatusLineStyle()
-
-        if has('title')
-                set titlestring=%t%(\ [%R%M]%)
-        endif
-
-        "highlight StatusLine    ctermfg=White ctermbg=DarkBlue cterm=bold
-        "highlight StatusLineNC  ctermfg=White ctermbg=DarkBlue cterm=NONE
+  " Broken down into easily includeable segments
+  set statusline=%<%f\    " Filename
+  set statusline+=%w%h%m%r " Options
+  set statusline+=%{fugitive#statusline()} "  Git Hotness
+  set statusline+=\ [%{&ff}/%Y]            " filetype
+  set statusline+=\ [%{getcwd()}]          " current dir
+  "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 " ********************** mappings
@@ -159,6 +132,13 @@ let mapleader = ","
 " indent in visual and insert mode
 vmap > >gv
 vmap < <gv
+
+" Command-][ to increase/decrease indentation
+vmap <D-]> >gv
+vmap <D-[> <gv
+
+" Command-/ to toggle comments
+map <D-/> :TComment<CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
@@ -185,7 +165,6 @@ let g:syntastic_quiet_warnings=1
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
@@ -193,15 +172,15 @@ let g:CommandTMaxHeight=20
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 " Cmd-T should open window at top
-let g:CommandTMatchWindowAtTop = 1 
+"let g:CommandTMatchWindowAtTop = 1
 
 " run rails/ruby tests (rails.vim)
 map <Leader>r :Rake<CR>
 map <Leader>R :.Rake<CR>
 
 " autoclose
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' } 
-let g:AutoCloseProtectedRegions = ["Character"] 
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
+let g:AutoCloseProtectedRegions = ["Character"]
 
 " ********************** custom functions
 "
