@@ -17,6 +17,9 @@ git_bundles = [
   "git://github.com/tpope/vim-git.git",
   "git://github.com/scrooloose/syntastic.git",
   "git://github.com/tpope/vim-ragtag.git",
+
+  "git://github.com/Townk/vim-autoclose.git",
+
   # not sure about this one
   "git://github.com/vim-scripts/taglist.vim.git",
   "git://github.com/wgibbs/vim-irblack.git",

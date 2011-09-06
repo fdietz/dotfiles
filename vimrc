@@ -199,6 +199,10 @@ let g:CommandTMatchWindowAtTop = 1
 map <Leader>r :Rake<CR>
 map <Leader>R :.Rake<CR>
 
+" autoclose
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' } 
+let g:AutoCloseProtectedRegions = ["Character"] 
+
 " ********************** custom functions
 "
 
@@ -207,6 +211,9 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
 endif
+
+" clear custom whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 " **********************
 "
