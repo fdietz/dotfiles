@@ -182,6 +182,8 @@ map <Leader>R :.Rake<CR>
 let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
 let g:AutoCloseProtectedRegions = ["Character"]
 
+" fix jlint plugin to use node.js jlint
+let $JS_CMD='node'
 " ********************** custom functions
 "
 
