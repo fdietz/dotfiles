@@ -155,11 +155,15 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <silent> <Leader>firefox :! open -a firefox.app %:p<CR>
 map <silent> <Leader>chrome :! open -a google\ chrome.app %:p<CR>
 
+" open vertical split and switch over to it
+nnoremap <leader>w <C-w>v<C-w>l
+
 " ********************** plugin configuration
 "
 
 " ack as grep replacement
 set grepprg=ack
+nnoremap <leader>a :Ack
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
