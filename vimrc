@@ -142,6 +142,7 @@ vmap <D-[> <gv
 
 " Command-/ to toggle comments
 map <D-/> :TComment<CR>
+map <Leader>c<space> :TComment<CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
