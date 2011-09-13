@@ -129,6 +129,9 @@ endif
 " set <Leader> to ","
 let mapleader = ","
 
+" escape edit mode with "jj"
+inoremap jj <ESC>
+
 " indent in visual and insert mode
 vmap > >gv
 vmap < <gv
@@ -184,6 +187,11 @@ let g:AutoCloseProtectedRegions = ["Character"]
 
 " fix jlint plugin to use node.js jlint
 let $JS_CMD='node'
+
+" tagbar plugin
+let g:tagbar_usearrows = 1
+nnoremap <leader>l :TagbarToggle<CR>
+
 " ********************** custom functions
 "
 
