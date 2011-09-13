@@ -98,17 +98,21 @@ end
 namespace :vim do
   desc "upate vim bundles"
   task :update_bundles do
-    cd_bundle_dir
+    system "git pull"
+    system "git submodule sync"
+    system "git submodule update --init --recursive"
 
-    puts "Trashing everything (lookout!)"
-    Dir["*"].each {|d| FileUtils.rm_rf d }
+  #   cd_bundle_dir
 
-    git_bundles.each do |url|
-      dir = url.split('/').last.sub(/\.git$/, '')
-      puts "  Unpacking #{url} into #{dir}"
-      `git clone #{url} #{dir}`
-      FileUtils.rm_rf(File.join(dir, ".git"))
-    end
+  #   puts "Trashing everything (lookout!)"
+  #   Dir["*"].each {|d| FileUtils.rm_rf d }
+
+  #   git_bundles.each do |url|
+  #     dir = url.split('/').last.sub(/\.git$/, '')
+  #     puts "  Unpacking #{url} into #{dir}"
+  #     `git clone #{url} #{dir}`
+  #     FileUtils.rm_rf(File.join(dir, ".git"))
+  #   end
   end
 
   desc "build vim bundles"
