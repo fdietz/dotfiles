@@ -81,8 +81,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
 " default color scheme
-color ir_black
-"color molokai
+" color ir_black
+color molokai
 
 " show invisible characters
 set list
@@ -206,8 +206,8 @@ map <D-t> :CommandT<CR>
 imap <D-t> <Esc>:CommandT<CR>
 let g:CommandTMaxHeight=20
 " Cmd-T should open file in your tab by default
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
+" let g:CommandTAcceptSelectionMap = '<C-t>'
+" let g:CommandTAcceptSelectionTabMap = '<CR>'
 " Cmd-T should open window at top
 "let g:CommandTMatchWindowAtTop = 1
 
