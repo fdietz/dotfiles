@@ -12,12 +12,11 @@ call pathogen#helptags()
 
 set encoding=utf-8 fileencoding=utf-8
 syntax on
-set background=dark
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
 set number                    " line numbers
-set hidden
+set hidden                    " hide buffers instead of closing themj
 set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
 set showmode
@@ -38,14 +37,13 @@ filetype plugin indent on       " load filetype plugins and indent settings
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
 set history=200
-set backspace=indent,eol,start
+set backspace=indent,eol,start  " allow backspacing over everything
 set linebreak
-set cmdheight=1               " command line two lines high
+set cmdheight=1               " command line one line high
 set undolevels=1000           " 1000 undos
 set updatecount=100           " switch every 100 chars
 set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
 set ttyfast                   " we have a fast terminal
-set noerrorbells              " No error bells please
 set shell=bash
 set fileformats=unix
 set ff=unix
@@ -66,6 +64,10 @@ set backup
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/backup/
 
+set title                     " change the terminal's title
+set visualbell                " Don't beep
+set noerrorbells              " No error bells please
+
 " ********************** look and feel
 "
 
@@ -77,11 +79,10 @@ set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
+set background=dark
 " default color scheme
 color ir_black
-
-" Don't beep
-set visualbell
+"color molokai
 
 " show invisible characters
 set list
@@ -97,16 +98,20 @@ let macvim_hig_shift_movement = 1
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
-" Tab completion
-" set wildmode=list:longest,list:full
-" set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn
+" wildmenu completion
+set wildmode=list:longest
+set wildmenu
 
-" show list instead of just completing
-"set wildmenu
-" command <Tab> completion, list matches, then longest common part, then all.
-"set wildmode=list:longest,full
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store?                      " OSX bullshit
 
-"let g:SuperTabDefaultCompletionType = "context"
 
 
 " ********************** status line
@@ -159,12 +164,34 @@ map <silent> <Leader>chrome :! open -a google\ chrome.app %:p<CR>
 " open vertical split and switch over to it
 nnoremap <leader>w <C-w>v<C-w>l
 
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" line wrapping is enabled, cursor down will jump "over" the current line
+nnoremap j gj
+nnoremap k gk
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Sudo to write
+cmap w!! w !sudo tee % >/dev/null
 " ********************** plugin configuration
 "
 
 " ack as grep replacement
 set grepprg=ack
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack<space>
+" Command-Shift-F for Ack
+map <D-F> :Ack<space>
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
@@ -175,6 +202,8 @@ map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Command-T configuration
+map <D-t> :CommandT<CR>
+imap <D-t> <Esc>:CommandT<CR>
 let g:CommandTMaxHeight=20
 " Cmd-T should open file in your tab by default
 let g:CommandTAcceptSelectionMap = '<C-t>'
@@ -196,6 +225,9 @@ let $JS_CMD='node'
 " tagbar plugin
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
+
+" supertab
+"let g:SuperTabDefaultCompletionType = "context"
 
 " ********************** custom functions
 "

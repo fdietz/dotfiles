@@ -2,7 +2,7 @@ if has("gui_macvim")
 
   " *************************** gui options
   "
-  
+
   " hide scrollbar, hide toolbar
   set guioptions=aAce
 
@@ -11,7 +11,7 @@ if has("gui_macvim")
 
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
-    
+
   " hide toolbar
   set guioptions-=T
 
@@ -26,21 +26,16 @@ if has("gui_macvim")
 
   " hide left scrollbar when using multiple buffers
   set guioptions-=L
-  
+
   " **************************** mappings
   "
-  
+
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
-    
-  " Command-Shift-F for Ack
-  map <D-F> :Ack<space>
-  
+
   " Command-T for CommandT
   macmenu &File.New\ Tab key=<D-T>
-  map <D-t> :CommandT<CR>
-  imap <D-t> <Esc>:CommandT<CR>
-  
+
   " Map Command-# to switch tabs
   map  <D-0> 0gt
   imap <D-0> <Esc>0gt
@@ -65,7 +60,7 @@ if has("gui_macvim")
 
   map <silent> <D-A-right> :tabnext<CR>
   map <silent> <D-A-left> :tabprevious<CR>
-  
+
 end
 
 " Include user's local vim config
