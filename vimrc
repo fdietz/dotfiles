@@ -95,6 +95,9 @@ set listchars=tab:▸\ ,eol:¬
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
+" allow movement everwhere
+set virtualedit=all
+
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
@@ -122,7 +125,7 @@ if has('statusline')
   " Broken down into easily includeable segments
   set statusline=%<%f\    " Filename
   set statusline+=%w%h%m%r " Options
-  set statusline+=%{fugitive#statusline()} "  Git Hotness
+  set statusline+=%{fugiti,svve#statusline()} "  Git Hotness
   set statusline+=\ [%{&ff}/%Y]            " filetype
   set statusline+=\ [%{getcwd()}]          " current dir
   "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
