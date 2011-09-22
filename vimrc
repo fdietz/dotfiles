@@ -187,6 +187,10 @@ vnoremap <Space> za
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
+
+" clear last search highlighting
+nnoremap <esc> :noh<return><esc>
+nnoremap <CR> :noh<CR><CR>
 " ********************** plugin configuration
 "
 
