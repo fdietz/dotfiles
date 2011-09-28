@@ -37,9 +37,6 @@
 [submodule "vim/bundle/jslint"]
 	path = vim/bundle/jslint
 	url = git://github.com/hallettj/jslint.vim.git
-[submodule "vim/bundle/closetag"]
-	path = vim/bundle/closetag
-	url = git://github.com/docunext/closetag.vim.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
