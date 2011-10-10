@@ -4,6 +4,7 @@ source ~/.bash/aliases
 source ~/.bash/paths
 source ~/.bash/git
 source ~/.bash/completion
+source ~/.bash/rbenv
 source ~/.bash/ps1
 
 ps1_set --prompt '\>' --notime
