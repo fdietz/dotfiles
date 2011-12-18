@@ -1,0 +1,45 @@
+fontName         = "Monaco"
+fontSize         = 14
+
+softWrap         = false
+tabSize          = 2
+softTabs         = true
+showInvisibles   = true
+
+# Extra files to include
+#
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
+fileBrowserGlob  = "{*,$myExtraIncludes}"
+include = "{$include,$myExtraIncludes}"
+
+# Hide log, vendor and tmp directories from search popups.
+#
+myExtraExcludes = "log,vendor,tmp"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
+
+# Variables
+TM_GIT = "/opt/local/bin/git"
+
+# File type specific configuration
+#
+[ text ]
+showInvisibles   = true
+
+[ .git/COMMIT_EDITMSG ]
+spellChecking    = true
+spellingLanguage = 'en'
+
+[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
+binary           = true
+
+[ source ]
+softTabs         = true
+tabSize          = 2
+
+[ source.python ]
+softTabs         = true
+tabSize          = 4
+
+[ "{README,INSTALL,LICENSE,TODO}" ]
+fileType         = "text.plain"
