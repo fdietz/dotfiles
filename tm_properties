@@ -14,7 +14,7 @@ include = "{$include,$myExtraIncludes}"
 
 # Hide log, vendor and tmp directories from search popups.
 #
-myExtraExcludes = "log,vendor,tmp"
+myExtraExcludes = "log,vendor,tmp,gems"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
 
