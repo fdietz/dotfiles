@@ -6,6 +6,9 @@ tabSize          = 2
 softTabs         = true
 showInvisibles   = true
 
+excludeFiles   = "*.{so,pyc,o,scssc}"
+excludeDirectories = "build,dist,tmp,log,gems,vendor"
+
 # Extra files to include
 #
 myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
