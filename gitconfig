@@ -1,5 +1,4 @@
 [user]
-	email = fdietz@gmail.com
 	name = Frederik Dietz
 [alias]
   st = status
@@ -8,6 +7,10 @@
   co = checkout
   df = diff
   lg = log -p
+[push]
+  # 'git push' will push the current branch to its tracking branch
+  # the usual default is to push all branches
+  default = tracking
 [difftool "sourcetree"]
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
 	path = 
