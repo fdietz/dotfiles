@@ -1,5 +1,10 @@
+#!/bin/bash
+
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable the 2D Dock
 defaults write com.apple.dock no-glass -bool true
@@ -24,6 +29,9 @@ defaults write enable-spring-load-actions-on-all-items -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -61,6 +69,24 @@ defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 # Enable Dashboard dev mode (allows keeping widgets on the desktop)
 defaults write com.apple.dashboard devmode -bool true
+
+# Show all filename extensions in Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Enable tap to click (Trackpad)
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
 # Reset Launchpad
 rm ~/Library/Application\ Support/Dock/*.db
