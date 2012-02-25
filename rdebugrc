@@ -1,2 +1,2 @@
-set autolist
-set autoeval
+set autolist on
+set autoeval on
