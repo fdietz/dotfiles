@@ -8,10 +8,3 @@ These are config files to set up a system the way I like it.
   git clone git://github.com/fdietz/dotfiles ~/.dotfiles
   cd ~/.dotfiles
   rake install
-  
-  to update all vim plugins:
-  rake vim:update_bundles
-  
-  some vim plugins require building c extensions:
-  rake vim:build_bundles
-
