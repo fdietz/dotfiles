@@ -7,6 +7,7 @@
   co = checkout
   df = diff
   lg = log -p
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
