@@ -2,3 +2,4 @@
 function c { cd ~/devel/git/$1; }
 
 alias be="bundle exec"
+alias r="rails"
