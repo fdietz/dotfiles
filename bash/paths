@@ -1,2 +1,2 @@
-export PATH="~/bin:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/usr/local/Cellar/python:$PATH"
+export PATH="~/bin:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/usr/local/Cellar/python:/usr/local/share/npm/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:$MANPATH"
