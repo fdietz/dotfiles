@@ -8,3 +8,7 @@ These are config files to set up a system the way I like it.
   git clone git://github.com/fdietz/dotfiles ~/.dotfiles
   cd ~/.dotfiles
   rake install
+
+== Setup VIM vundle
+
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
