@@ -1,5 +1,5 @@
 set nocompatible
-filetype off
+"filetype off
 
 " init vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -7,18 +7,47 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " my bundles here
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
+
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/snipmate-snippets'
+" Source support_function.vim to support snipmate-snippets.
+if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+    source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+endif
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+
+Bundle 'tpope/vim-surround'
+Bundle 'Townk/vim-autoclose'
+Bundle 'scrooloose/syntastic'
+Bundle 'mattn/gist-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
+
+Bundle 'leshill/vim-json'
+Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
+
 Bundle 'tpope/vim-markdown'
 
-filetype plugin indent on     " load filetype plugins and indent settings
+filetype on                   " Enable filetype detection
+filetype indent on            " Enable filetype-specific indenting
+filetype plugin on            " Enable filetype-specific plugins
 
 set encoding=utf-8 fileencoding=utf-8
 syntax on
@@ -38,7 +67,7 @@ set smartindent               " try to be smart about indenting (C-style)
 set expandtab                 " expand <Tab>s with spaces; death to tabs!
 set shiftwidth=2              " spaces for each step of (auto)indent
 set softtabstop=2             " set virtual tab stop (compat for 8-wide tabs)
-set tabstop=8                 " for proper display of files with tabs
+set tabstop=2                 " for proper display of files with tabs
 set shiftround                " always round indents to multiple of shiftwidth
 set copyindent                " use existing indents for new indents
 set preserveindent            " save as much indent structure as possible
@@ -57,10 +86,6 @@ set shell=bash
 set fileformats=unix
 set ff=unix
 
-filetype on                   " Enable filetype detection
-filetype indent on            " Enable filetype-specific indenting
-filetype plugin on            " Enable filetype-specific plugins
-
 " searching
 set incsearch                 " incremental search
 set ignorecase                " search ignoring case
@@ -76,8 +101,6 @@ set directory=$HOME/.vim/backup/
 set title                     " change the terminal's title
 set visualbell                " Don't beep
 set noerrorbells              " No error bells please
-
-set autoread                  " automatically reload changes if detected
 
 " ********************** look and feel
 "
@@ -107,11 +130,12 @@ color molokai
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-" allow movement everwhere
-"set virtualedit=all
-
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 
 " wildmenu completion
 set wildmode=list:longest
@@ -129,6 +153,20 @@ set wildignore+=*.DS_Store?                      " OSX bullshit
 
 " always show status line
 set laststatus=2
+
+" ********************** ruby
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+
+" enable autocomplete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " ********************** mappings
 "
@@ -218,6 +256,19 @@ let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
+
+" vim-indent-guides
+if !exists('g:spf13_no_indent_guides_autocolor')
+    let g:indent_guides_auto_colors = 1
+else
+    " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+endif
+"set ts=2 sw=2 et
+let g:indent_guides_start_level = 3
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " ********************** custom functions
 "
