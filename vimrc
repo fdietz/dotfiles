@@ -71,6 +71,7 @@ set tabstop=2                 " for proper display of files with tabs
 set shiftround                " always round indents to multiple of shiftwidth
 set copyindent                " use existing indents for new indents
 set preserveindent            " save as much indent structure as possible
+set virtualedit=onemore
 
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
@@ -167,6 +168,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" use honza's snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 " ********************** mappings
 "
