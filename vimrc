@@ -1,5 +1,5 @@
-" mode not vi compatible
 set nocompatible
+filetype off
 
 " init vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -13,11 +13,12 @@ Bundle 'tpope/vim-git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
+
+filetype plugin indent on     " load filetype plugins and indent settings
 
 set encoding=utf-8 fileencoding=utf-8
 syntax on
@@ -25,7 +26,7 @@ set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
 set number                    " line numbers
-set hidden                    " hide buffers instead of closing themj
+set hidden                    " hide buffers instead of closing them
 set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
 set showmode
@@ -41,7 +42,6 @@ set tabstop=8                 " for proper display of files with tabs
 set shiftround                " always round indents to multiple of shiftwidth
 set copyindent                " use existing indents for new indents
 set preserveindent            " save as much indent structure as possible
-filetype plugin indent on     " load filetype plugins and indent settings
 
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
@@ -77,8 +77,11 @@ set title                     " change the terminal's title
 set visualbell                " Don't beep
 set noerrorbells              " No error bells please
 
+set autoread                  " automatically reload changes if detected
+
 " ********************** look and feel
 "
+"set cursorline
 
 " cursor look and feel
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -94,9 +97,9 @@ set background=dark
 color molokai
 
 " show invisible characters
-set list
+"set list
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ ,eol:¬
 
 " selection exclusive
 :set selection=exclusive
@@ -105,7 +108,7 @@ set listchars=tab:▸\ ,eol:¬
 let macvim_hig_shift_movement = 1
 
 " allow movement everwhere
-set virtualedit=all
+"set virtualedit=all
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
@@ -124,20 +127,8 @@ set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store?                      " OSX bullshit
 
-" ********************** status line
-"
-if has('statusline')
-  set laststatus=2
-
-  " Broken down into easily includeable segments
-  set statusline=%<%f\    " Filename
-  set statusline+=%w%h%m%r " Options
-  set statusline+=%{fugitive#statusline()} "  Git Hotness
-  set statusline+=\ [%{&ff}/%Y]            " filetype
-  set statusline+=\ [%{getcwd()}]          " current dir
-  "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
+" always show status line
+set laststatus=2
 
 " ********************** mappings
 "
@@ -178,6 +169,12 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap j gj
 nnoremap k gk
 
+" resize horizontal split window
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -187,6 +184,9 @@ map <C-l> <C-w>l
 " clear last search highlighting
 nnoremap <esc> :noh<return><esc>
 nnoremap <CR> :noh<CR><CR>
+
+" close quickfix window
+map <leader>qq :cclose<CR>
 
 " ********************** plugin configuration
 "
@@ -199,11 +199,26 @@ nnoremap <leader>a :Ack<space>
 map <D-F> :Ack<space>
 
 " NerdTree
-map <Leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>n :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+let g:ctrlp_working_path_mode = 2 " Smart path mode
+let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
+let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
+let g:ctrlp_split_window = 1 " <CR> = New Tab
+let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
+
 " ********************** custom functions
 "
 " clear custom whitespaces on save
