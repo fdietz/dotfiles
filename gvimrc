@@ -33,9 +33,6 @@ if has("gui_macvim")
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
 
-  " Command-T for CommandT
-  macmenu &File.New\ Tab key=<D-T>
-
   " Map Command-# to switch tabs
   map  <D-0> 0gt
   imap <D-0> <Esc>0gt

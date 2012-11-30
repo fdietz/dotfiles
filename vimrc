@@ -121,9 +121,9 @@ set background=dark
 color molokai
 
 " show invisible characters
-"set list
+set list
 " Use the same symbols as TextMate for tabstops and EOLs
-"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬
 
 " selection exclusive
 :set selection=exclusive
