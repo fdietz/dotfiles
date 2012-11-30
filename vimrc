@@ -45,6 +45,9 @@ Bundle 'briancollins/vim-jst'
 
 Bundle 'tpope/vim-markdown'
 
+Bundle 'rson/vim-conque'
+Bundle 'skwp/vim-ruby-conque'
+
 filetype on                   " Enable filetype detection
 filetype indent on            " Enable filetype-specific indenting
 filetype plugin on            " Enable filetype-specific plugins
@@ -273,6 +276,36 @@ endif
 let g:indent_guides_start_level = 3
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
+
+" ************* conque termin
+"
+let g:ConqueTerm_InsertOnEnter = 0
+let g:ConqueTerm_CWInsert = 1
+nmap <silent> <Leader>r :call RunRubyCurrentFileConque()<CR>
+nmap <silent> <Leader>R :call RunRakeConque()<CR>
+nmap <silent> <Leader>c :execute 'ConqueTermSplit rails c'<CR>
+nmap <silent> <Leader>i :execute 'ConqueTermSplit pry'<CR>
+nmap <silent> <Leader>b :execute 'ConqueTermSplit /bin/bash --login'<CR>
+nmap <silent> <Leader>S :call RunRspecCurrentFileConque()<CR>
+
+" Run the current file as a ruby file, great for running unit tests
+function! RunRubyCurrentFileConque()
+  execute "ConqueTermSplit bundle exec ruby -Itest" bufname('%')
+endfunction
+
+function! RunRspecCurrentFileConque()
+  execute "ConqueTermSplit bundle exec rspec" bufname('%') " --color --format doc"
+endfunction
+
+function! RunRakeConque()
+  execute "ConqueTermSplit bundle exec rake"
+endfunction
+
+" Send the current selection to conqueterm. This lets you easily veal
+" Ruby code in an irb console. Note: you must have only one ConqueTerm
+" console open and running irb for this to work. Somehow it gets confused
+" when multiple consoles are open. If you know how to fix this let me know :)
+let g:ConqueTerm_SendVisKey = '<Leader>e'
 
 " ********************** custom functions
 "
