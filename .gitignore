@@ -2,3 +2,5 @@
 log.txt
 tags
 .sass-cache
+vim/bundle
+vim/backup
