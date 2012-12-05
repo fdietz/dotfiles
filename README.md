@@ -17,3 +17,6 @@ Or manually clone dotfiles and run the installer script:
 Use the osx script:
 
     ./osx
+    
+## Credits
+Lots of vim setup ideas taken from [spf13-vim](http://vim.spf13.com/index.html).
