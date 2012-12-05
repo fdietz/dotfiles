@@ -1,52 +1,18 @@
 set nocompatible
-"filetype off
 
-" init vundle
-set rtp+=~/.vim/bundle/vundle/
+" ensure vundle works
+filetype on
+filetype off
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
-" my bundles here
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
-" Source support_function.vim to support snipmate-snippets.
-if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-    source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
 endif
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nathanaelkane/vim-indent-guides'
-
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-
-Bundle 'tpope/vim-surround'
-Bundle 'Townk/vim-autoclose'
-Bundle 'scrooloose/syntastic'
-Bundle 'mattn/gist-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-
-Bundle 'leshill/vim-json'
-Bundle 'groenewege/vim-less'
-Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-
-Bundle 'tpope/vim-markdown'
-
-Bundle 'rson/vim-conque'
-Bundle 'skwp/vim-ruby-conque'
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 filetype on                   " Enable filetype detection
 filetype indent on            " Enable filetype-specific indenting
