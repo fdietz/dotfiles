@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-dotfiles="$HOME/.dotfiles2"
+dotfiles="$HOME/.dotfiles"
 
 # to error out
 warn() {
