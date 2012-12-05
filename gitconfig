@@ -1,5 +1,6 @@
 [user]
-	name = Frederik Dietz
+  name = Frederik Dietz
+  email = fdietz@gmail.com
 [alias]
   st = status
   ci = commit
@@ -18,13 +19,7 @@
   branch = auto
   interactive = auto
 [core]
-  excludesfile = /Users/frederik.dietz/.gitignore_global
+  excludesfile = /Users/fdietz/.gitignore_global
   editor = subl -w
-[difftool "sourcetree"]
-	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-	trustExitCode = true
 [github]
   user = fdietz
