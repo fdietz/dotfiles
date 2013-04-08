@@ -59,9 +59,13 @@ set ff=unix
 " searching
 set incsearch                 " incremental search
 set ignorecase                " search ignoring case
-set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
+set smartcase                 " search ignore case unless one character is upper case
+set hlsearch                  " highlight the search
 set diffopt=filler,iwhite     " ignore all whitespace and sync
+set gdefault                  " substitute globally on lines
+"nnoremap / /\v                " turn off vims default regexp handling
+"vnoremap / /\v                " turn off vims default regexp handling
 
 " Directories for swp files
 set backup
@@ -90,7 +94,7 @@ set background=dark
 color molokai
 
 " show invisible characters
-set list
+"set list
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -198,6 +202,21 @@ nnoremap <CR> :noh<CR><CR>
 
 " close quickfix window
 map <leader>qq :cclose<CR>
+
+map <S-Enter> O<ESC> "inserts new line without going into insert mode
+
+" bash like (emacs style) commandline keys
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-g>  <C-c>
 
 " ********************** plugin configuration
 "

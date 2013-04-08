@@ -1,17 +1,13 @@
-require 'irb/completion'
-require 'irb/ext/save-history'
-require 'rubygems'
-%x{gem install 'wirble' --no-ri --no-rdoc} unless Gem.available?('wirble')
-Gem.refresh 
-require 'wirble'
+require "rubygems"
+require "irb/completion"
 
-Wirble.init
-Wirble.colorize
+begin
+  require "awesome_print"
+  AwesomePrint.irb!
+rescue LoadError => err
+  warn "Could notload awesome_print: #{err}"
+end
 
-colors = Wirble::Colorize.colors.merge({
- :object_class => :purple,
- :symbol => :purple,
- :symbol_prefix => :purple
-})
-Wirble::Colorize.colors = colors
-
+IRB.conf[:EVAL_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = File::expand_path("~/.irbhistory")
