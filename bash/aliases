@@ -1,5 +1,8 @@
-# changing directory to code project
-function c { cd ~/devel/git/$1; }
+# bash
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
+# rails
 alias be="bundle exec"
 alias r="rails"
