@@ -1,4 +1,5 @@
 source ~/.bash/config
+source ~/.bash/functions
 source ~/.bash/aliases
 source ~/.bash/paths
 source ~/.bash/rbenv
