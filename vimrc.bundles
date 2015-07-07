@@ -45,6 +45,3 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 
 Bundle 'tpope/vim-markdown'
-
-Bundle 'rson/vim-conque'
-Bundle 'skwp/vim-ruby-conque'
