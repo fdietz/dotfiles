@@ -1,4 +1,14 @@
-.DS_Store
-log.txt
-tags
+*~
+log
+tmp
+*.sw[nop]
 .sass-cache
+.DS_Store
+.bundle
+.env
+db/*.sqlite3
+rerun.txt
+tags
+!tags/
+tmp/**/*
+!tmp/cache/.keep

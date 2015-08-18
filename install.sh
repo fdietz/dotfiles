@@ -37,10 +37,10 @@ lnif $dotfiles/bash $HOME/.bash
 # ruby
 echo "Setting up dev tools...\n"
 lnif $dotfiles/ackrc $HOME/.ackrc
-lnif $dotfiles/ctags $HOME/.ctags
+lnif $dotfiles/agignore $HOME/.agignore
 lnif $dotfiles/gemrc $HOME/.gemrc
 lnif $dotfiles/gitconfig $HOME/.gitconfig
-lnif $dotfiles/gitignore_global $HOME/.gitignoreglobal
+lnif $dotfiles/gitignore $HOME/.gitignore
 lnif $dotfiles/irbrc $HOME/.irbirc
 lnif $dotfiles/rdebugrc $HOME/.rdebugrc
 

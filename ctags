@@ -1,6 +1,0 @@
---exclude=gems
---exclude=vendor
---exclude=log
---exclude=tmp
---exclude=engines/perl_backend/test/stub_data
---exclude=public/ass-xe

@@ -104,12 +104,23 @@ set listchars=tab:▸\ ,eol:¬
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+" Set syntax highlighting for specific file types
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+
+" Enable spellchecking for Markdown
+autocmd FileType markdown setlocal spell
+
+" Automatically wrap at 80 characters for Markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Automatically wrap at 72 characters and spell check git commit messages
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal spell
 
 " wildmenu completion
 set wildmode=list:longest
@@ -218,15 +229,31 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
 " ********************** plugin configuration
 "
 
 " ack as grep replacement
-set grepprg=ack
+" set grepprg=ack
 nnoremap <leader>a :Ack<space>
 
 " Command-Shift-F for Ack
 map <D-F> :Ack<space>
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " NerdTree
 map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -261,16 +288,6 @@ endif
 let g:indent_guides_start_level = 3
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-
-" ************* conque termin
-"
-let g:ConqueTerm_InsertOnEnter = 0
-let g:ConqueTerm_CWInsert = 1
-
-" Run the current file as a ruby file, great for running unit tests
-function! RunRubyCurrentFileConque()
-  execute "ConqueTermSplit bundle exec ruby -Itest" bufname('%')
-endfunction
 
 " ********************** custom functions
 "
