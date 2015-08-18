@@ -85,6 +85,8 @@ brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'postgres'
 brew_launchctl_restart 'postgresql'
 
+brew_install_or_upgrade 'mysql'
+
 brew_install_or_upgrade 'the_silver_searcher'
 brew_install_or_upgrade 'vim'
 
