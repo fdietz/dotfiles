@@ -121,6 +121,9 @@ fancy_echo "Configuring Bundler ..."
 
 brew_install_or_upgrade 'heroku-toolbelt'
 
+# dev tools
+# gem_install_or_update scss_lint
+
 # optional apps
 
 # brew_tap 'caskroom/cask'

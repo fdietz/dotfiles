@@ -1,1 +1,4 @@
 gem: --no-document
+:sources:
+- http://rubygems.org
+- http://gems.xing.com
