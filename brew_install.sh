@@ -124,6 +124,11 @@ brew_install_or_upgrade 'heroku-toolbelt'
 # dev tools
 # gem_install_or_update scss_lint
 
+# eslint
+# npm -g install eslint
+# npm -g install babel-eslint
+# npm -g install eslint-plugin-react
+
 # optional apps
 
 # brew_tap 'caskroom/cask'
