@@ -208,8 +208,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " clear last search highlighting
-nnoremap <esc> :noh<return><esc>
-nnoremap <CR> :noh<CR><CR>
+"nnoremap <esc> :noh<return><esc>
+"nnoremap <CR> :noh<CR><CR>
 
 " close quickfix window
 map <leader>qq :cclose<CR>
@@ -285,9 +285,9 @@ else
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
 endif
 "set ts=2 sw=2 et
-let g:indent_guides_start_level = 3
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_start_level = 3
+"let g:indent_guides_guide_size = 1
+"let g:indent_guides_enable_on_vim_startup = 1
 
 " ********************** custom functions
 "
