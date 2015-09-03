@@ -15,7 +15,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-
+Bundle 'airblade/vim-gitgutter'
+Bundle 'rking/ag.vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/snipmate-snippets'
 " Source support_function.vim to support snipmate-snippets.

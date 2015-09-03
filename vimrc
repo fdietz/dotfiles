@@ -238,10 +238,10 @@ set colorcolumn=+1
 
 " ack as grep replacement
 " set grepprg=ack
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Ag<space>
 
 " Command-Shift-F for Ack
-map <D-F> :Ack<space>
+map <D-F> :Ag<space>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
