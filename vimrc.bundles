@@ -26,6 +26,7 @@ endif
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'chriskempson/tomorrow-theme'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'

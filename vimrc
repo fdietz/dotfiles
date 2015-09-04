@@ -264,8 +264,8 @@ let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
+"let NERDTreeKeepTreeInNewTab=1
+"let g:nerdtree_tabs_open_on_gui_startup=0
 
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
@@ -273,8 +273,8 @@ map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_split_window = 1 " <CR> = New Tab
-let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
+"let g:ctrlp_split_window = 1 " <CR> = New Tab
+"let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
 
 " vim-indent-guides
 if !exists('g:spf13_no_indent_guides_autocolor')
