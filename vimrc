@@ -67,8 +67,13 @@ set gdefault                  " substitute globally on lines
 "nnoremap / /\v                " turn off vims default regexp handling
 "vnoremap / /\v                " turn off vims default regexp handling
 
-" Directories for swp files
+" disable swp files
+set noswapfile
+set nobackup
+set nowritebackup
 set backup
+
+" Directories for swp files
 set backupdir=$HOME/.vim/backup/
 set directory=$HOME/.vim/backup/
 
@@ -89,9 +94,17 @@ set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
+
 " default color scheme
 " color ir_black
+
 color molokai
+
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+" color solarized
 
 " show invisible characters
 "set list
@@ -105,7 +118,7 @@ set listchars=tab:▸\ ,eol:¬
 let macvim_hig_shift_movement = 1
 
 " Set syntax highlighting for specific file types
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*_spec\.rb}    set ft=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -154,7 +167,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " use honza's snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 " ********************** mappings
 "
@@ -163,7 +176,7 @@ let mapleader = ","
 
 " escape edit mode with "jj"
 inoremap jj <ESC>
-
+inoremap jk <ESC>
 " indent in visual and insert mode
 vmap > >gv
 vmap < <gv
@@ -210,6 +223,9 @@ map <C-l> <C-w>l
 " clear last search highlighting
 "nnoremap <esc> :noh<return><esc>
 "nnoremap <CR> :noh<CR><CR>
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 
 " close quickfix window
 map <leader>qq :cclose<CR>
@@ -264,8 +280,8 @@ let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
-"let NERDTreeKeepTreeInNewTab=1
-"let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
@@ -276,18 +292,12 @@ let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 "let g:ctrlp_split_window = 1 " <CR> = New Tab
 "let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
 
-" vim-indent-guides
-if !exists('g:spf13_no_indent_guides_autocolor')
-    let g:indent_guides_auto_colors = 1
-else
-    " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-endif
-"set ts=2 sw=2 et
-"let g:indent_guides_start_level = 3
-"let g:indent_guides_guide_size = 1
-"let g:indent_guides_enable_on_vim_startup = 1
+"Syntastic Options
+"let g:syntastic_check_on_open = 1
+map <Leader>e :Errors<cr>
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_javascript_checkers = ["eslint"]"
 
 " ********************** custom functions
 "

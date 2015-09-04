@@ -17,20 +17,21 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'rking/ag.vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
+"
 " Source support_function.vim to support snipmate-snippets.
-if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-    source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
-endif
+"if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+"    source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+"endif
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'chriskempson/tomorrow-theme'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 
+Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'Townk/vim-autoclose'
 Bundle 'scrooloose/syntastic'
