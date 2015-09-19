@@ -11,7 +11,8 @@ Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -48,3 +49,5 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 
 Bundle 'tpope/vim-markdown'
+
+Bundle 'elixir-lang/vim-elixir'

@@ -299,6 +299,20 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_javascript_checkers = ["eslint"]"
 
+" bling/vim-airline
+
+" Don't show seperators
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 0
+" Enable vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#enable_branch     = 1
+let g:airline#extensions#enable_syntastic  = 1
+
 " ********************** custom functions
 "
 " clear custom whitespaces on save
