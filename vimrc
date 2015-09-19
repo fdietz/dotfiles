@@ -166,9 +166,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" use honza's snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-
 " ********************** mappings
 "
 " set <Leader> to ","
