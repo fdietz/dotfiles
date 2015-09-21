@@ -11,41 +11,33 @@ Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'rking/ag.vim'
 Bundle 'thoughtbot/vim-rspec'
-"Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
-"
-" Source support_function.vim to support snipmate-snippets.
-"if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-"    source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
-"endif
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-markdown'
+
+Bundle 'scrooloose/syntastic'
 
 Bundle 'mattn/emmet-vim'
-Bundle 'tpope/vim-surround'
 Bundle 'Townk/vim-autoclose'
-Bundle 'scrooloose/syntastic'
-Bundle 'mattn/gist-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-
 Bundle 'leshill/vim-json'
-Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-
-Bundle 'tpope/vim-markdown'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'vim-ruby/vim-ruby'
