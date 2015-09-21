@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'rking/ag.vim'
+Bundle 'thoughtbot/vim-rspec'
 "Bundle 'garbas/vim-snipmate'
 "Bundle 'honza/snipmate-snippets'
 "
