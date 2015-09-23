@@ -288,7 +288,7 @@ let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 "let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
 
 "Syntastic Options
-"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 1
 map <Leader>e :Errors<cr>
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
@@ -307,6 +307,13 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#enable_branch     = 1
 let g:airline#extensions#enable_syntastic  = 1
+
+let g:rspec_runner = "os_x_iterm2"
+
+" vim-rspec mappings
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
 
 " ********************** custom functions
 "
