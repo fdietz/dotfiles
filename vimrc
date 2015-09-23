@@ -113,6 +113,10 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " selection exclusive
 :set selection=exclusive
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
