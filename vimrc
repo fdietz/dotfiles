@@ -24,6 +24,7 @@ set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
 set number                    " line numbers
+set numberwidth=5
 set hidden                    " hide buffers instead of closing them
 set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
