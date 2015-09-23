@@ -107,9 +107,7 @@ let g:solarized_visibility="normal"
 " color solarized
 
 " show invisible characters
-"set list
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " selection exclusive
 :set selection=exclusive
