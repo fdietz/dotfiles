@@ -1,25 +1,16 @@
-set nocompatible
+set nocompatible              " Use vim settings, rather than vi settings
 
-" ensure vundle works
-filetype on
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
-endif
-
+" use vundle to load plugins
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-filetype on                   " Enable filetype detection
-filetype indent on            " Enable filetype-specific indenting
-filetype plugin on            " Enable filetype-specific plugins
+filetype indent plugin on     " Enable filetype detection and specific indenting
+
+syntax on                     " syntax highlighting
 
 set encoding=utf-8 fileencoding=utf-8
-syntax on
+
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
@@ -65,8 +56,11 @@ set smartcase                 " search ignore case unless one character is upper
 set hlsearch                  " highlight the search
 set diffopt=filler,iwhite     " ignore all whitespace and sync
 set gdefault                  " substitute globally on lines
-"nnoremap / /\v                " turn off vims default regexp handling
-"vnoremap / /\v                " turn off vims default regexp handling
+
+" fix default regexp handling by automatically inserting \v before any search
+" string
+nnoremap / /\v
+vnoremap / /\v
 
 " disable swp files
 set noswapfile
@@ -82,9 +76,43 @@ set title                     " change the terminal's title
 set visualbell                " Don't beep
 set noerrorbells              " No error bells please
 
+" Enable mouse in all modes
+set mouse=a
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" always show status line
+set laststatus=2
+
+" selection exclusive
+set selection=exclusive
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" wildmenu completion
+set wildmode=list:longest
+set wildmenu
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store?                      " OSX bullshit
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
 " ********************** look and feel
-"
-"set cursorline
 
 " cursor look and feel
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -95,33 +123,23 @@ set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
-
 " default color scheme
 " color ir_black
-
 color molokai
 
+" color solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
-" color solarized
 
 " show invisible characters
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" selection exclusive
-:set selection=exclusive
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
+" ********************** Filetype
 
 " Set syntax highlighting for specific file types
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*_spec\.rb}    set ft=ruby
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,config.ru,*_spec\.rb}    set ft=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -138,37 +156,6 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal spell
 
-" wildmenu completion
-set wildmode=list:longest
-set wildmenu
-
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.luac                           " Lua byte code
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.pyc                            " Python byte code
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store?                      " OSX bullshit
-
-" always show status line
-set laststatus=2
-
-" ********************** ruby
-
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
-" enable autocomplete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 " ********************** mappings
 "
 " set <Leader> to ","
@@ -177,28 +164,6 @@ let mapleader = ","
 " escape edit mode with "jj"
 inoremap jj <ESC>
 inoremap jk <ESC>
-" indent in visual and insert mode
-vmap > >gv
-vmap < <gv
-
-" Command-][ to increase/decrease indentation
-vmap <D-]> >gv
-vmap <D-[> <gv
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" open current file with Firefox, Google Chrome, Safari
-map <silent> <Leader>firefox :! open -a firefox.app %:p<CR>
-map <silent> <Leader>chrome :! open -a google\ chrome.app %:p<CR>
-
-" open vertical split and switch over to it
-nnoremap <leader>w <C-w>v<C-w>l
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -208,29 +173,14 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap j gj
 nnoremap k gk
 
-" resize horizontal split window
-if bufwinnr(1)
-  map + <C-W>+
-  map - <C-W>-
-endif
-
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" clear last search highlighting
-"nnoremap <esc> :noh<return><esc>
-"nnoremap <CR> :noh<CR><CR>
-
-" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" close quickfix window
-map <leader>qq :cclose<CR>
-
-map <S-Enter> O<ESC> "inserts new line without going into insert mode
+" open new vertical split and switch over to it
+nnoremap <leader>w <C-w>v<C-w>l
 
 " bash like (emacs style) commandline keys
 cnoremap <C-a>  <Home>
@@ -245,12 +195,28 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+" Map <C-L> (redraw screen) to also turn off search highlighting until the next search
+nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <leader><space> :noh<cr>
+
+" disable arrow keys and see if this changes things for me
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+nnoremap s :w<cr>
 
 " ********************** plugin configuration
-"
+
+" vim-ruby
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
 
 " ack as grep replacement
 " set grepprg=ack
@@ -289,12 +255,18 @@ map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-"let g:ctrlp_split_window = 1 " <CR> = New Tab
-"let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
+let g:ctrlp_custom_ignore= &wildignore .  '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*'
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+      \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+      \ 'PrtHistory(-1)':       ['<c-n>'],
+      \ 'PrtHistory(1)':        ['<c-p>'],
+      \ 'ToggleFocus()':        ['<c-tab>'],
+      \ }
 
 "Syntastic Options
-let g:syntastic_check_on_open = 1
 map <Leader>e :Errors<cr>
+let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_javascript_checkers = ["eslint"]"
@@ -313,15 +285,14 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#enable_branch     = 1
 let g:airline#extensions#enable_syntastic  = 1
 
-let g:rspec_runner = "os_x_iterm2"
-
 " vim-rspec mappings
+let g:rspec_runner = "os_x_iterm2"
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 
 " ********************** custom functions
-"
+
 " clear custom whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 

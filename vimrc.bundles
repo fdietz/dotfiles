@@ -1,9 +1,13 @@
-set nocompatible
+"set nocompatible
 filetype off
 
 " ensure vundle works
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
 
 Bundle 'gmarik/vundle'
 
@@ -13,11 +17,10 @@ Bundle 'tomtom/tlib_vim'
 
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'rking/ag.vim'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
@@ -31,10 +34,10 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-markdown'
 
 Bundle 'scrooloose/syntastic'
-
+Bundle 'airblade/vim-gitgutter'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'mattn/emmet-vim'
 Bundle 'Townk/vim-autoclose'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 
 Bundle 'leshill/vim-json'
