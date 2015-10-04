@@ -57,8 +57,7 @@ set hlsearch                  " highlight the search
 set diffopt=filler,iwhite     " ignore all whitespace and sync
 set gdefault                  " substitute globally on lines
 
-" fix default regexp handling by automatically inserting \v before any search
-" string
+" fix default regexp handling by automatically inserting \v before any search string
 nnoremap / /\v
 vnoremap / /\v
 
@@ -96,6 +95,9 @@ set splitright
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
+" show invisible characters
+set list listchars=tab:»·,trail:·,nbsp:·
+
 " wildmenu completion
 set wildmode=list:longest
 set wildmenu
@@ -112,6 +114,7 @@ set wildignore+=*.DS_Store?                      " OSX bullshit
 
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
+
 " ********************** look and feel
 
 " cursor look and feel
@@ -132,9 +135,6 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
-
-" show invisible characters
-set list listchars=tab:»·,trail:·,nbsp:·
 
 " ********************** Filetype
 
@@ -198,16 +198,6 @@ cnoremap <C-g>  <C-c>
 " Map <C-L> (redraw screen) to also turn off search highlighting until the next search
 nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <leader><space> :noh<cr>
-
-" disable arrow keys and see if this changes things for me
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
 
 nnoremap s :w<cr>
 
