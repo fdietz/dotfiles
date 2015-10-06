@@ -1,4 +1,4 @@
-"set nocompatible
+set nocompatible
 filetype off
 
 " ensure vundle works
