@@ -26,22 +26,25 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'hukl/Smyck-Color-Scheme'
 Bundle 'nathanaelkane/vim-indent-guides'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-markdown'
 
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'mattn/emmet-vim'
 Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
 
+" languages
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails.git'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'skalnik/vim-vroom'
+Bundle 'mattn/emmet-vim'

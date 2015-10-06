@@ -160,6 +160,7 @@ autocmd FileType gitcommit setlocal spell
 "
 " set <Leader> to ","
 let mapleader = ","
+let maplocalleader = "\\"
 
 " escape edit mode with "jj"
 inoremap jj <ESC>
@@ -198,8 +199,20 @@ cnoremap <C-g>  <C-c>
 " Map <C-L> (redraw screen) to also turn off search highlighting until the next search
 nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <leader><space> :noh<cr>
+" clear search highlighting on return
+nnoremap <cr> :nohlsearch<cr>
 
 nnoremap s :w<cr>
+
+" toggling wrap/nowrap
+nmap <Leader>w :set wrap!<cr>
+nmap <Leader>W :set nowrap<cr>
+
+" buffer resizing mappings (shift + arrow key)
+nnoremap <S-Up> <c-w>+
+nnoremap <S-Down> <c-w>-
+nnoremap <S-Left> <c-w><
+nnoremap <S-Right> <c-w>>
 
 " ********************** plugin configuration
 
