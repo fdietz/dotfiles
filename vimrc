@@ -214,6 +214,8 @@ nnoremap <S-Down> <c-w>-
 nnoremap <S-Left> <c-w><
 nnoremap <S-Right> <c-w>>
 
+" Execute dot in the selection
+vnoremap . :norm.<CR>
 " ********************** plugin configuration
 
 " vim-ruby
