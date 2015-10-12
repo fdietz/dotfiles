@@ -6,3 +6,6 @@ alias ....="cd ../../.."
 # rails
 alias be="bundle exec"
 alias r="rails"
+
+# journal
+alias journal='vim ~/Dropbox/journal/`date +"%Y-%m-%d"`.md'
