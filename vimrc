@@ -196,8 +196,6 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the next search
-nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <leader><space> :noh<cr>
 " clear search highlighting on return
 nnoremap <cr> :nohlsearch<cr>
