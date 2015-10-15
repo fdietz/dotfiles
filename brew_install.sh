@@ -99,6 +99,7 @@ brew_install_or_upgrade 'ruby-build'
 
 brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
+brew_install_or_upgrade 'ctags-exuberant'
 
 ruby_version="2.2.2"
 
