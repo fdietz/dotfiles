@@ -215,6 +215,10 @@ nnoremap <S-Right> <c-w>>
 
 " Execute dot in the selection
 vnoremap . :norm.<CR>
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
 " ********************** plugin configuration
 
 " vim-ruby
