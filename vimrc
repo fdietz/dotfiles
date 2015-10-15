@@ -258,7 +258,7 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
-map <leader>r :CtrlPTag<cr>
+map <leader>r :CtrlPBufTag<cr>
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
@@ -297,6 +297,17 @@ let g:rspec_runner = "os_x_iterm2"
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+
+" tagbar
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+
+set tags=./tags;~/git
+
+" Make tags placed in .git/tags file available in all levels of a repository
+let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+if gitroot != ''
+  let &tags = &tags . ',' . gitroot . '/.git/tags'
+endif
 
 " ********************** custom functions
 
