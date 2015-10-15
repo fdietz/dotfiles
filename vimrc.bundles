@@ -40,6 +40,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
 
 " languages
 Bundle 'leshill/vim-json'

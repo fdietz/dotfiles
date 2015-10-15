@@ -258,6 +258,7 @@ map <C-n> :NERDTreeTabsToggle<CR>
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>r :CtrlPTag<cr>
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
