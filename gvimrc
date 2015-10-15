@@ -27,6 +27,10 @@ if has("gui_macvim")
   " hide left scrollbar when using multiple buffers
   set guioptions-=L
 
+  " nice gui tabs
+  set guioptions+=e
+
+  set antialias
   " **************************** mappings
   "
 

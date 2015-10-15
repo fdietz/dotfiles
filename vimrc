@@ -15,7 +15,7 @@ set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
 set number                    " line numbers
-set numberwidth=5
+set numberwidth=1             " min width of number column to the left
 set hidden                    " hide buffers instead of closing them
 set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
@@ -98,9 +98,12 @@ au VimResized * :wincmd =
 " show invisible characters
 set list listchars=tab:»·,trail:·,nbsp:·
 
+" autocomplete settings
+set completeopt=longest,menuone
+
+set wildmenu                                     " turn on wild menu
 " wildmenu completion
-set wildmode=list:longest
-set wildmenu
+set wildmode=list:longest,full
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -136,6 +139,24 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
+
+" Solid line for vsplit separator
+set fillchars=vert:│
+
+" ********************** Spellcheck
+
+" Spelling highlights. Use underline in term to prevent cursorline highlights
+" from interfering
+if !has("gui_running")
+  hi clear SpellBad
+  hi SpellBad cterm=underline ctermfg=red
+  hi clear SpellCap
+  hi SpellCap cterm=underline ctermfg=blue
+  hi clear SpellLocal
+  hi SpellLocal cterm=underline ctermfg=blue
+  hi clear SpellRare
+  hi SpellRare cterm=underline ctermfg=blue
+endif
 
 " ********************** Filetype
 
