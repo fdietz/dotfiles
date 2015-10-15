@@ -128,7 +128,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 set background=dark
 " default color scheme
 " color ir_black
-color molokai
+"color molokai
+color seti
 
 " color solarized
 let g:solarized_termcolors=256
@@ -141,7 +142,7 @@ let g:solarized_visibility="normal"
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,config.ru,*_spec\.rb}    set ft=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-
+autocmd BufRead,BufNewFile *.pm set filetype=perl
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
