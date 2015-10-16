@@ -141,8 +141,8 @@ let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
 
 " Solid line for vsplit separator
-set fillchars=vert:│
-
+"set fillchars=vert:│
+set cursorline          " highlight current line
 " ********************** Spellcheck
 
 " Spelling highlights. Use underline in term to prevent cursorline highlights
