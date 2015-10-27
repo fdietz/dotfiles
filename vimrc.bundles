@@ -27,6 +27,8 @@ Bundle 'hukl/Smyck-Color-Scheme'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'trusktr/seti.vim'
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+Bundle 'morhetz/gruvbox'
+Bundle 'sjl/badwolf'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
