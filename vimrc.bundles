@@ -24,11 +24,14 @@ Bundle 'rking/ag.vim'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'hukl/Smyck-Color-Scheme'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'trusktr/seti.vim'
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Bundle 'morhetz/gruvbox'
 Bundle 'sjl/badwolf'
+Bundle 'chriskempson/base16-vim'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'twerth/ir_black'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'

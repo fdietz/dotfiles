@@ -79,8 +79,8 @@ set noerrorbells              " No error bells please
 set mouse=a
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+"set textwidth=80
+"set colorcolumn=+1
 
 " always show status line
 set laststatus=2
@@ -119,6 +119,7 @@ set wildignore+=*.DS_Store?                      " OSX bullshit
 let macvim_hig_shift_movement = 1
 
 " ********************** look and feel
+set t_Co=256
 
 " cursor look and feel
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -132,13 +133,19 @@ set background=dark
 " default color scheme
 " color ir_black
 "color molokai
-color seti
+"color seti
+"color gruvbox
+color hybrid
 
 " color solarized
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
+
+" gruvbox
+let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_termcolors=256
 
 " Solid line for vsplit separator
 "set fillchars=vert:│
