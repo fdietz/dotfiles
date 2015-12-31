@@ -7,7 +7,7 @@ if has("gui_macvim")
   set guioptions=aAce
 
   " font
-  set gfn=Monaco:h15
+  set gfn=Monaco:h14
 
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
@@ -31,6 +31,9 @@ if has("gui_macvim")
   set guioptions+=e
 
   set antialias
+
+  set linespace=2
+
   " **************************** mappings
   "
 
