@@ -348,6 +348,11 @@ if gitroot != ''
   let &tags = &tags . ',' . gitroot . '/.git/tags'
 endif
 
+" emmet
+
+" use tab to expand tag in insert mode
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " ********************** custom functions
 
 " clear custom whitespaces on save
