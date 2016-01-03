@@ -50,6 +50,7 @@ Bundle 'honza/vim-snippets'
 " languages
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails.git'

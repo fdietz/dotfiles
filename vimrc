@@ -47,6 +47,7 @@ set ttyfast                   " we have a fast terminal
 set shell=bash
 set fileformats=unix
 set ff=unix
+set ttimeoutlen=50            " make esc work faster
 
 " searching
 set incsearch                 " incremental search
@@ -173,7 +174,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.pm set filetype=perl
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 " Enable spellchecking for Markdown
 autocmd FileType markdown setlocal spell
@@ -305,10 +306,16 @@ let g:ctrlp_prompt_mappings = {
 
 "Syntastic Options
 map <Leader>e :Errors<cr>
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_javascript_checkers = ["eslint"]"
+let g:syntastic_javascript_checkers = ["eslint"]
+
+" mxw/vim-jsx
+"let g:jsx_ext_required = 0 " Allow jsx in normal js files
 
 " bling/vim-airline
 
