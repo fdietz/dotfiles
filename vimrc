@@ -226,11 +226,15 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
-nnoremap <leader><space> :noh<cr>
-" clear search highlighting on return
+" clear search highlighting
+nnoremap <C-L> :noh<cr>
 nnoremap <cr> :nohlsearch<cr>
 
+" save file
 nnoremap s :w<cr>
+
+" yank to end of line
+nnoremap Y y$
 
 " toggling wrap/nowrap
 nmap <Leader>w :set wrap!<cr>
@@ -306,8 +310,8 @@ let g:ctrlp_prompt_mappings = {
 
 "Syntastic Options
 map <Leader>e :Errors<cr>
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
@@ -349,9 +353,6 @@ if gitroot != ''
 endif
 
 " emmet
-
-" use tab to expand tag in insert mode
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " ********************** custom functions
 
