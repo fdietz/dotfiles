@@ -22,10 +22,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'hukl/Smyck-Color-Scheme'
 Bundle 'trusktr/seti.vim'
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Bundle 'morhetz/gruvbox'
 Bundle 'sjl/badwolf'
 Bundle 'chriskempson/base16-vim'

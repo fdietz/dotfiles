@@ -138,12 +138,6 @@ set background=dark
 "color gruvbox
 color hybrid
 
-" color solarized
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-
 " gruvbox
 let g:gruvbox_contrast_dark="medium"
 let g:gruvbox_termcolors=256
