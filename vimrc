@@ -240,6 +240,11 @@ nnoremap <S-Down> <c-w>-
 nnoremap <S-Left> <c-w><
 nnoremap <S-Right> <c-w>>
 
+" indent on paste
+nnoremap p ]p
+" paste without indent
+nnoremap <c-p> p
+
 " Execute dot in the selection
 vnoremap . :norm.<CR>
 
