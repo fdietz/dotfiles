@@ -34,6 +34,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-dispatch'
 
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
@@ -55,3 +56,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'skalnik/vim-vroom'
 Bundle 'mattn/emmet-vim'
 Bundle 'cakebaker/scss-syntax.vim'
+
+" neo complete
+" snippet xp template:w
+"
