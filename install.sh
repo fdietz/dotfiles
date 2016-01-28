@@ -51,6 +51,10 @@ lnif $dotfiles/gvimrc $HOME/.gvimrc
 lnif $dotfiles/vimrc.bundles $HOME/.vimrc.bundles
 lnif $dotfiles/vim $HOME/.vim
 
+# tmux
+echo "Setting up tmux\n"
+lnif $dotfiles/tmux.config $HOME/.tmux.config
+
 # vim vundle
 if [ ! -d $dotfiles/vim/bundle ]; then
     mkdir -p $dotfiles/vim/bundle
