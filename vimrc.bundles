@@ -35,6 +35,7 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-sleuth'
 
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'

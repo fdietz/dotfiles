@@ -119,6 +119,9 @@ set wildignore+=*.DS_Store?                      " OSX bullshit
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
+" use the system clipboard
+set clipboard=unnamed
+
 " ********************** look and feel
 set t_Co=256
 
@@ -132,11 +135,12 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
 " default color scheme
-" color ir_black
+"color ir_black
 "color molokai
 "color seti
 "color gruvbox
 color hybrid
+
 
 " gruvbox
 let g:gruvbox_contrast_dark="medium"
@@ -145,6 +149,15 @@ let g:gruvbox_termcolors=256
 " Solid line for vsplit separator
 "set fillchars=vert:│
 set cursorline          " highlight current line
+
+" change cursor shape in insert/normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+  " vertical bar in insert mode
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  " block in normal mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
 " ********************** Spellcheck
 
 " Spelling highlights. Use underline in term to prevent cursorline highlights
@@ -221,8 +234,8 @@ cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
 " clear search highlighting
-nnoremap <C-L> :noh<cr>
-nnoremap <cr> :nohlsearch<cr>
+"nnoremap <cr> :nohlsearch<cr>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " save file
 nnoremap s :w<cr>
@@ -309,19 +322,15 @@ let g:ctrlp_prompt_mappings = {
 
 "Syntastic Options
 map <Leader>e :Errors<cr>
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_warning_symbol = "!"
 let g:syntastic_javascript_checkers = ["eslint"]
-
-" mxw/vim-jsx
-"let g:jsx_ext_required = 0 " Allow jsx in normal js files
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " bling/vim-airline
-
 " Don't show seperators
 let g:airline_left_sep=''
 let g:airline_right_sep=''

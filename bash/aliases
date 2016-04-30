@@ -9,3 +9,6 @@ alias r="rails"
 
 # journal
 alias journal='vim ~/Dropbox/journal/`date +"%Y-%m-%d"`.md'
+
+# todo
+alias todo='function _open_todo() { vim ~/Dropbox/todos/$1.md; };_open_todo'
