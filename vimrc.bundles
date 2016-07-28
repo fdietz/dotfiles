@@ -57,7 +57,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'skalnik/vim-vroom'
 Bundle 'mattn/emmet-vim'
 Bundle 'cakebaker/scss-syntax.vim'
-
+Bundle 'slashmili/alchemist.vim'
 " neo complete
 " snippet xp template:w
 "
