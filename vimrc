@@ -328,8 +328,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "!"
 let g:syntastic_javascript_checkers = ["eslint"]
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+"let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+"let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " bling/vim-airline
 " Don't show seperators

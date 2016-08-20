@@ -49,6 +49,7 @@ Bundle 'honza/vim-snippets'
 " languages
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mtscout6/syntastic-local-eslint.vim'
 Bundle 'mxw/vim-jsx'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'vim-ruby/vim-ruby'
