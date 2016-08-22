@@ -1,6 +1,6 @@
 # required for mysql to compile correctly on snow leopard
 export ARCHFLAGS="-arch x86_64"
 
-export EDITOR="subl"
+export EDITOR="vim"
 
 export NODE_PATH="/usr/local/lib/node"
