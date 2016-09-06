@@ -291,8 +291,8 @@ if executable('ag')
 endif
 
 " NerdTree
-map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <leader>n :NERDTreeFind<CR>
+"map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+"map <leader>n :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -302,8 +302,8 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 "
-" map <Leader>n :NERDTreeFind<CR>
-" map <C-n> :NERDTreeTabsToggle<CR>
+ map <Leader>n :NERDTreeFind<CR>
+ map <C-n> :NERDTreeTabsToggle<CR>
 
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
