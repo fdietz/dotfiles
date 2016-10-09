@@ -1,52 +1,49 @@
-set nocompatible
-filetype off
-
-" ensure vundle works
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
-" my bundles here
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
 
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'rking/ag.vim'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-Bundle 'morhetz/gruvbox'
-Bundle 'w0ng/vim-hybrid'
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 
-Bundle 'neomake/neomake'
-Bundle 'tpope/vim-commentary'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'godlygeek/tabular'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plug 'neomake/neomake'
+Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'godlygeek/tabular'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " languages
-Bundle 'leshill/vim-json'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'slashmili/alchemist.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'skalnik/vim-vroom'
-Bundle 'mattn/emmet-vim'
-Bundle 'cakebaker/scss-syntax.vim'
+Plug 'leshill/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'thoughtbot/vim-rspec'
+Plug 'skalnik/vim-vroom'
+Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
+
+call plug#end()
