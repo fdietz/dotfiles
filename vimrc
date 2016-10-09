@@ -123,7 +123,11 @@ let macvim_hig_shift_movement = 1
 set clipboard=unnamed
 
 " ********************** look and feel
-set t_Co=256
+
+" set true colors
+if $TERM_PROGRAM =~ "iTerm"
+  set termguicolors
+endif
 
 " cursor look and feel
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -135,10 +139,7 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
 " default color scheme
-"color ir_black
-"color molokai
-"color seti
-"color gruvbox
+" color gruvbox
 color hybrid
 
 
@@ -330,6 +331,21 @@ let g:syntastic_warning_symbol = "!"
 let g:syntastic_javascript_checkers = ["eslint"]
 "let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 "let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
+" linting neomake
+autocmd! BufRead,BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_ruby_enabled_makers = ['rubocop']
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+
+let g:neomake_warning_sign = {
+  \ 'text': '!',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '✗',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " bling/vim-airline
 " Don't show seperators
