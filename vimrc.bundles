@@ -24,14 +24,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
-
-Plug 'neomake/neomake'
 Plug 'tpope/vim-commentary'
+
 Plug 'airblade/vim-gitgutter'
+Plug 'neomake/neomake'
+Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 " languages
 Plug 'leshill/vim-json'
@@ -41,8 +45,6 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'thoughtbot/vim-rspec'
-Plug 'skalnik/vim-vroom'
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
 

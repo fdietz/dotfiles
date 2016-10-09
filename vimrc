@@ -276,10 +276,9 @@ let g:rubycomplete_rails = 1
 noremap <leader>p :FZF<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 " NerdTree
-"map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-"map <leader>n :NERDTreeFind<CR>
+map <Leader>n :NERDTreeFind<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -288,15 +287,22 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-"
- map <Leader>n :NERDTreeFind<CR>
- map <C-n> :NERDTreeTabsToggle<CR>
 
 " linting neomake
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
+
 autocmd! BufRead,BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
 let g:neomake_ruby_enabled_makers = ['rubocop']
-let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+let g:neomake_javascript_eslint_exe = g:eslint_path
+let g:neomake_javascript_flow_exe = g:flow_path
+let g:neomake_jsx_flow_exe = g:flow_path
 
 let g:neomake_warning_sign = {
   \ 'text': '!',
@@ -320,15 +326,6 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#enable_branch     = 1
 let g:airline#extensions#enable_syntastic  = 1
 
-" vim-rspec mappings
-let g:rspec_runner = "os_x_iterm2"
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-
-" tagbar
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
 set tags=./tags;~/git
 
 " Make tags placed in .git/tags file available in all levels of a repository
@@ -337,6 +334,8 @@ if gitroot != ''
   let &tags = &tags . ',' . gitroot . '/.git/tags'
 endif
 
+" vim-jsx
+let g:jsx_ext_required = 0
 " emmet
 
 " ********************** custom functions
