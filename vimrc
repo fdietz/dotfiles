@@ -264,6 +264,9 @@ vnoremap . :norm.<CR>
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+
+" open file in chrome
+nmap <silent> <leader>ch :exec 'silent !open -a "Google Chrome" % &'<CR>
 " ********************** plugin configuration
 
 " vim-ruby
