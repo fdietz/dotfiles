@@ -1,65 +1,51 @@
-set nocompatible
-filetype off
-
-" ensure vundle works
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
-" my bundles here
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
 
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'rking/ag.vim'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-Bundle 'trusktr/seti.vim'
-Bundle 'morhetz/gruvbox'
-Bundle 'sjl/badwolf'
-Bundle 'chriskempson/base16-vim'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'twerth/ir_black'
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-commentary'
 
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'airblade/vim-gitgutter'
-"Bundle 'Townk/vim-autoclose'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
+Plug 'neomake/neomake'
+Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
+Plug 'godlygeek/tabular'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 " languages
-Bundle 'leshill/vim-json'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mtscout6/syntastic-local-eslint.vim'
-Bundle 'mxw/vim-jsx'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'skalnik/vim-vroom'
-Bundle 'mattn/emmet-vim'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'slashmili/alchemist.vim'
-" neo complete
-" snippet xp template:w
-"
+Plug 'leshill/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
+
+call plug#end()

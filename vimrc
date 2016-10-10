@@ -123,7 +123,11 @@ let macvim_hig_shift_movement = 1
 set clipboard=unnamed
 
 " ********************** look and feel
-set t_Co=256
+
+" set true colors
+if $TERM_PROGRAM =~ "iTerm"
+  set termguicolors
+endif
 
 " cursor look and feel
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -135,10 +139,7 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 set background=dark
 " default color scheme
-"color ir_black
-"color molokai
-"color seti
-"color gruvbox
+" color gruvbox
 color hybrid
 
 
@@ -274,28 +275,13 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-" ack as grep replacement
-" set grepprg=ack
-nnoremap <leader>a :Ag<space>
-
-" Command-Shift-F for Ack
-map <D-F> :Ag<space>
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" fzf
+noremap <leader>p :FZF<CR>
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " NerdTree
-"map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-"map <leader>n :NERDTreeFind<CR>
+map <Leader>n :NERDTreeFind<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -304,35 +290,31 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-"
- map <Leader>n :NERDTreeFind<CR>
- map <C-n> :NERDTreeTabsToggle<CR>
 
-" CtrlP plugin
-map <leader>p :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>r :CtrlPBufTag<cr>
-let g:ctrlp_working_path_mode = 2 " Smart path mode
-let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
-let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_custom_ignore= &wildignore .  '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*'
-let g:ctrlp_prompt_mappings = {
-      \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-      \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
-      \ 'PrtHistory(-1)':       ['<c-n>'],
-      \ 'PrtHistory(1)':        ['<c-p>'],
-      \ 'ToggleFocus()':        ['<c-tab>'],
-      \ }
+" linting neomake
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
 
-"Syntastic Options
-map <Leader>e :Errors<cr>
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "!"
-let g:syntastic_javascript_checkers = ["eslint"]
-"let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-"let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
+
+autocmd! BufRead,BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+let g:neomake_ruby_enabled_makers = ['rubocop']
+let g:neomake_javascript_eslint_exe = g:eslint_path
+let g:neomake_javascript_flow_exe = g:flow_path
+let g:neomake_jsx_flow_exe = g:flow_path
+
+let g:neomake_warning_sign = {
+  \ 'text': '!',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '✗',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " bling/vim-airline
 " Don't show seperators
@@ -347,15 +329,6 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#enable_branch     = 1
 let g:airline#extensions#enable_syntastic  = 1
 
-" vim-rspec mappings
-let g:rspec_runner = "os_x_iterm2"
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-
-" tagbar
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
 set tags=./tags;~/git
 
 " Make tags placed in .git/tags file available in all levels of a repository
@@ -364,6 +337,8 @@ if gitroot != ''
   let &tags = &tags . ',' . gitroot . '/.git/tags'
 endif
 
+" vim-jsx
+let g:jsx_ext_required = 0
 " emmet
 
 " ********************** custom functions
