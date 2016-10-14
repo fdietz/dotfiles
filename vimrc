@@ -279,6 +279,13 @@ let g:rubycomplete_rails = 1
 noremap <leader>p :FZF<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
+" ack as grep replacement
+" set grepprg=ack
+nnoremap <leader>a :Ag<space>
+
+" Command-Shift-F for Ack
+map <D-F> :Ag<space>
+
 " NerdTree
 map <Leader>n :NERDTreeFind<CR>
 map <C-n> :NERDTreeTabsToggle<CR>
