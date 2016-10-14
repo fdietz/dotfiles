@@ -90,16 +90,11 @@ brew_install_or_upgrade 'mysql'
 brew_install_or_upgrade 'the_silver_searcher'
 brew_install_or_upgrade 'vim'
 
-brew_install_or_upgrade 'hub'
-
-brew_install_or_upgrade 'node'
-
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 
 brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
-brew_install_or_upgrade 'ctags-exuberant'
 
 ruby_version="2.2.2"
 
@@ -122,25 +117,3 @@ fancy_echo "Configuring Bundler ..."
 
 brew_install_or_upgrade 'heroku-toolbelt'
 
-# dev tools
-# gem_install_or_update scss_lint
-
-# eslint
-# npm -g install eslint
-# npm -g install babel-eslint
-# npm -g install eslint-plugin-react
-
-# optional apps
-
-# brew_tap 'caskroom/cask'
-# brew_install_or_upgrade 'brew-cask'
-
-# brew cask install dropbox
-# brew cask install google-chrome
-# brew cask install firefox
-# brew cask install spotify
-# brew cask install sequel-pro
-# brew cask install psequel
-# brew cask install atom
-# brew cask install iterm2
-# brew cask install sourcetree
