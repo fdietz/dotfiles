@@ -1,6 +1,6 @@
 set nocompatible              " Use vim settings, rather than vi settings
 
-" use vundle to load plugins
+" use Plug to load plugins
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -276,7 +276,7 @@ let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
 " fzf
-noremap <leader>p :FZF<CR>
+noremap <leader>t :FZF<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " ack as grep replacement
