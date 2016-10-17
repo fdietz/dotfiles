@@ -275,16 +275,38 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-" fzf
-noremap <leader>t :FZF<CR>
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+" rking/ag
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-" ack as grep replacement
-" set grepprg=ack
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 nnoremap <leader>a :Ag<space>
 
 " Command-Shift-F for Ack
 map <D-F> :Ag<space>
+
+" CtrlP plugin
+map <leader>p :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>r :CtrlPBufTag<cr>
+let g:ctrlp_working_path_mode = 2 " Smart path mode
+let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
+let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
+let g:ctrlp_custom_ignore= &wildignore .  '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*'
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+      \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+      \ 'PrtHistory(-1)':       ['<c-n>'],
+      \ 'PrtHistory(1)':        ['<c-p>'],
+      \ 'ToggleFocus()':        ['<c-tab>'],
+      \ }
 
 " NerdTree
 map <Leader>n :NERDTreeFind<CR>
