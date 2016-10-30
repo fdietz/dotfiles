@@ -13,12 +13,5 @@ if [ -f ~/.bash_local.rc ]; then
   source ~/.bash_local.rc
 fi
 
-if command -v brew >/dev/null 2>&1; then
-  # Load rupa's z if installed
-  [ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
