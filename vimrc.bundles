@@ -37,12 +37,8 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 " languages
-Plug 'leshill/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elixir-lang/vim-elixir'
+Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
