@@ -366,6 +366,9 @@ if gitroot != ''
   let &tags = &tags . ',' . gitroot . '/.git/tags'
 endif
 
+" ludovicchabant/vim-gutentags
+let g:gutentags_cache_dir = '~/.tags_cache'
+
 " vim-jsx
 let g:jsx_ext_required = 0
 " emmet

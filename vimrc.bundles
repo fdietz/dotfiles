@@ -34,7 +34,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -44,6 +44,6 @@ Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-rails'
 Plug 'mattn/emmet-vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 call plug#end()
