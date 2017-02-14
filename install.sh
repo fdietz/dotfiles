@@ -56,15 +56,3 @@ lnif $dotfiles/vim $HOME/.vim
 echo "Setting up tmux\n"
 lnif $dotfiles/tmux.config $HOME/.tmux.config
 
-# vim vundle
-if [ ! -d $dotfiles/vim/bundle ]; then
-    mkdir -p $dotfiles/vim/bundle
-fi
-
-if [ ! -e $dotfiles/vim/bundle/vundle ]; then
-  echo "Installing vundle"
-  git clone http://github.com/gmarik/vundle.git $dotfiles/vim/bundle/vundle
-fi
-
-echo "Update/Install plugins using vundle"
-vim -u $dotfiles/vimrc.bundles +BundleInstall! +BundleClean +qall
