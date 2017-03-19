@@ -115,6 +115,9 @@ set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store?                      " OSX bullshit
+set wildignore+=node_modules
+set wildignore+=deps
+set wildignore+=_build
 
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
@@ -140,7 +143,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 set background=dark
 " default color scheme
 " color gruvbox
-color hybrid
+" color hybrid
+color onedark
 
 
 " gruvbox
@@ -299,7 +303,7 @@ map <leader>r :CtrlPBufTag<cr>
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_custom_ignore= &wildignore .  '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*'
+let g:ctrlp_custom_ignore= &wildignore .  '*/.git/*,*/.hg/*,*/.svn/*,*/bower_components/*,*/node_modules/*,*/deps/*'
 let g:ctrlp_prompt_mappings = {
       \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
       \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
@@ -319,6 +323,7 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+let g:ctrlp_dont_split = 'NERD_tree_2'
 
 " linting neomake
 function! StrTrim(txt)
