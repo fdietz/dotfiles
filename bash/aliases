@@ -15,3 +15,6 @@ alias todo='function _open_todo() { vim ~/Dropbox/todos/$1.md; };_open_todo'
 
 # freewifi
 alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`"
+
+# weather in Hamburg
+alias weather="curl -4 http://wttr.in/Hamburg"
