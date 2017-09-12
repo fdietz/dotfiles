@@ -145,6 +145,7 @@ set background=dark
 " color gruvbox
 " color hybrid
 color onedark
+" color muon
 
 
 " gruvbox
@@ -334,8 +335,10 @@ let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
 
 autocmd! BufRead,BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
-let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+" let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+" let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 let g:neomake_javascript_eslint_exe = g:eslint_path
 let g:neomake_javascript_flow_exe = g:flow_path
@@ -379,6 +382,8 @@ let g:jsx_ext_required = 0
 " emmet
 
 " ********************** custom functions
+" return to last edited line when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " clear custom whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e

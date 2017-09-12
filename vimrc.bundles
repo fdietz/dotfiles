@@ -19,6 +19,7 @@ Plug 'rking/ag.vim'
 Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'joshdick/onedark.vim'
+Plug 'gregsexton/Muon'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
