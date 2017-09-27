@@ -76,35 +76,23 @@ set title                     " change the terminal's title
 set visualbell                " Don't beep
 set noerrorbells              " No error bells please
 
-" Enable mouse in all modes
-set mouse=a
+set mouse=a                   " Enable mouse in all modes
 
-" Make it obvious where 80 characters is
-"set textwidth=80
-"set colorcolumn=+1
+set laststatus=2              " always show status line
 
-" always show status line
-set laststatus=2
+set selection=exclusive       " selection exclusive
 
-" selection exclusive
-set selection=exclusive
+set splitbelow                " open split panes to bottom by default
+set splitright                " open split panes to right by default
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
+au VimResized * :wincmd =     " Resize splits when the window is resized
 
-" Resize splits when the window is resized
-au VimResized * :wincmd =
+set list listchars=tab:»·,trail:·,nbsp:·         " show invisible characters
 
-" show invisible characters
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" autocomplete settings
-set completeopt=longest,menuone
+set completeopt=longest,menuone                  " autocomplete settings
 
 set wildmenu                                     " turn on wild menu
-" wildmenu completion
-set wildmode=list:longest,full
+set wildmode=list:longest,full                   " wildmenu completion
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -115,15 +103,13 @@ set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store?                      " OSX bullshit
-set wildignore+=node_modules
-set wildignore+=deps
-set wildignore+=_build
+set wildignore+=node_modules                     " Node modules
+set wildignore+=deps                             " Elixir dependencies
+set wildignore+=_build                           " Elixir build
 
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
+let macvim_hig_shift_movement = 1                " MacVIM shift+arrow-keys behavior (required in .vimrc)
 
-" use the system clipboard
-set clipboard=unnamed
+set clipboard=unnamed                            " use the system clipboard
 
 " ********************** look and feel
 
@@ -223,9 +209,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" open new vertical split and switch over to it
-nnoremap <leader>w <C-w>v<C-w>l
-
 " bash like (emacs style) commandline keys
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
@@ -293,9 +276,6 @@ if executable('ag')
 endif
 
 nnoremap <leader>a :Ag<space>
-
-" Command-Shift-F for Ack
-map <D-F> :Ag<space>
 
 " CtrlP plugin
 map <leader>p :CtrlP<cr>
@@ -379,7 +359,6 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 
 " vim-jsx
 let g:jsx_ext_required = 0
-" emmet
 
 " ********************** custom functions
 " return to last edited line when opening files
