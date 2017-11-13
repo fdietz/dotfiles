@@ -85,18 +85,21 @@ brew_install_or_upgrade 'git'
 brew_install_or_upgrade 'postgres'
 brew_launchctl_restart 'postgresql'
 
+# setup postgres
+createuser -s -r postgres
+
 brew_install_or_upgrade 'mysql'
 
 brew_install_or_upgrade 'the_silver_searcher'
 brew_install_or_upgrade 'vim'
 
+brew_install_or_upgrade 'erlang'
+brew_install_or_upgrade 'elixir'
+
 brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 
-brew_install_or_upgrade 'openssl'
-brew unlink openssl && brew link openssl --force
-
-ruby_version="2.2.2"
+ruby_version="2.4.2"
 
 eval "$(rbenv init -)"
 
