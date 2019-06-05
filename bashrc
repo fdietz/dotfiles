@@ -5,6 +5,7 @@ source ~/.bash/paths
 source ~/.bash/rbenv
 source ~/.bash/completion
 source ~/.bash/ps1
+source ~/.bash/elixir
 
 ps1_set --prompt '\>' --notime
 
