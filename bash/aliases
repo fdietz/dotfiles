@@ -18,3 +18,6 @@ alias freewifi="sudo ifconfig en0 ether `openssl rand -hex 6 | sed 's/\(..\)/\1:
 
 # weather in Hamburg
 alias weather="curl -4 http://wttr.in/Hamburg"
+
+# tunnelblick fix when closing without disconnecting
+alias fixtunnelblick="sudo networksetup -setdnsservers Wi-Fi Empty; sudo bash -c \"ifconfig en0 down; route flush && ifconfig en0 up\""
