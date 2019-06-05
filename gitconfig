@@ -18,7 +18,7 @@
 [color]
   ui = auto
 [core]
-  excludesfile = /Users/frederik.dietz/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = vim
 [include]
   path = ~/.gitconfig.local
