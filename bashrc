@@ -3,7 +3,7 @@ source ~/.bash/functions
 source ~/.bash/aliases
 source ~/.bash/paths
 source ~/.bash/rbenv
-source ~/.bash/rvm
+source ~/.bash/nvm
 source ~/.bash/completion
 source ~/.bash/ps1
 source ~/.bash/elixir
