@@ -44,6 +44,7 @@ lnif $dotfiles/gitignore $HOME/.gitignore
 lnif $dotfiles/irbrc $HOME/.irbirc
 lnif $dotfiles/rdebugrc $HOME/.rdebugrc
 lnif $dotfiles/ctags $HOME/.ctags
+lnif $dotfiles/ripgrep $HOME/.ripgrep
 
 # vim
 echo "Setting up vim...\n"

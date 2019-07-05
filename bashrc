@@ -7,6 +7,7 @@ source ~/.bash/nvm
 source ~/.bash/completion
 source ~/.bash/ps1
 source ~/.bash/elixir
+source ~/.ripgrep
 
 ps1_set --prompt '\>' --notime
 
@@ -18,3 +19,5 @@ if [ -f ~/.bash_local.rc ]; then
   source ~/.bash_local.rc
 fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
