@@ -7,7 +7,7 @@ source ~/.bash/nvm
 source ~/.bash/completion
 source ~/.bash/ps1
 source ~/.bash/elixir
-source ~/.ripgrep
+source ~/.bash/ripgrep
 
 ps1_set --prompt '\>' --notime
 
