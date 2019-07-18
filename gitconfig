@@ -13,6 +13,7 @@
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  publish = git push --set-upstream origin $(git rev-parse — abbrev-ref HEAD)
 [push]
   default = simple
 [color]
