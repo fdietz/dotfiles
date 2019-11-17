@@ -1,0 +1,5 @@
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto

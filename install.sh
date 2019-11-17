@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 dotfiles="$HOME/.dotfiles"
 
@@ -34,16 +34,23 @@ lnif $dotfiles/bash_profile $HOME/.bash_profile
 lnif $dotfiles/bashrc $HOME/.bashrc
 lnif $dotfiles/bash $HOME/.bash
 
-# ruby
-echo "Setting up dev tools...\n"
-lnif $dotfiles/ackrc $HOME/.ackrc
-lnif $dotfiles/agignore $HOME/.agignore
-lnif $dotfiles/gemrc $HOME/.gemrc
+# git
+echo "Setting up dev tools git...\n"
 lnif $dotfiles/gitconfig $HOME/.gitconfig
 lnif $dotfiles/gitignore $HOME/.gitignore
+
+# ruby
+echo "Setting up dev tools ruby...\n"
+lnif $dotfiles/gemrc $HOME/.gemrc
 lnif $dotfiles/irbrc $HOME/.irbirc
 lnif $dotfiles/rdebugrc $HOME/.rdebugrc
+
+# asdf
+lnif $dotfiles/asdfrc $HOME/.asdfrc
+
+# misc
 lnif $dotfiles/ctags $HOME/.ctags
+lnif $dotfiles/psqlrc $HOME/.psqlrc
 
 # vim
 echo "Setting up vim...\n"

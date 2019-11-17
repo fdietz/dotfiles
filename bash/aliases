@@ -1,7 +1,6 @@
 # bash
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+
+alias j='function _jump() { cd ~/git/$1; };_jump'
 
 # rails
 alias be="bundle exec"

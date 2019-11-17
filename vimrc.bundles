@@ -15,8 +15,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'mileszs/ack.vim'
-"Plug 'rking/ag.vim'
 
 Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
