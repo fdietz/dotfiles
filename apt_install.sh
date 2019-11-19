@@ -14,18 +14,18 @@ function install {
 }
 
 # dev tools required for installed languages
-install
-automake 
-autoconf 
-libreadline-dev
-libncurses-dev 
-libssl-dev 
-libyaml-dev
-libxslt-dev 
-libffi-dev 
-libtool 
-unixodbc-dev
-unzip curl
+install automake
+install autoconf
+install libreadline-dev
+install libncurses-dev
+install libssl-dev
+install libyaml-dev
+install libxslt-dev
+install libffi-dev
+install libtool
+install unixodbc-dev
+install unzip
+install curl
 
 # other
 install git
