@@ -18,4 +18,4 @@ rm microsoft.gpg
 # ln -s $(pwd)/../vscode_settings.json $HOME/Library/Application Support/Code/User/settings.json
 
 # Linux
-ln -s $(pwd)/../vscode_settings.json $HOME/.config/Code/User/settings.json
+ln -s $(pwd)/vscode_settings.json $HOME/.config/Code/User/settings.json

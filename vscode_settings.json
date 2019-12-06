@@ -1,6 +1,6 @@
 {
-    "window.zoomLevel": 0,
-    "editor.fontSize": 15,
+    "window.zoomLevel": 1,
+    "editor.fontSize": 14,
     "editor.fontFamily": "Fira Code",
     "editor.tabSize": 2,
     "explorer.confirmDragAndDrop": false,
