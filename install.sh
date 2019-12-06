@@ -57,5 +57,4 @@ echo "Setting up vim...\n"
 lnif $dotfiles/vimrc $HOME/.vimrc
 lnif $dotfiles/gvimrc $HOME/.gvimrc
 lnif $dotfiles/vimrc.bundles $HOME/.vimrc.bundles
-lnif $dotfiles/vim $HOME/.vim
 
