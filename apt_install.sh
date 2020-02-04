@@ -47,3 +47,4 @@ install vim
 install yarn
 install firefox
 install postgresql-11
+install fonts-firacode
