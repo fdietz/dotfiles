@@ -31,7 +31,8 @@
         "vue": "html",
         "vue-html": "html",
         "javascriptreact": "html",
-        "erb": "html"
+        "erb": "html",
+        "html.erb": "html"
     },
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": false,
@@ -39,22 +40,12 @@
     "elixirLS.dialyzerEnabled": false,
     "editor.formatOnSave": false,
     "[javascript]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "html",
-            "autoFix": true
-        },
-        "vue"
-    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
     "javascript.updateImportsOnFileMove.enabled": "never",
     "editor.folding": false,
     "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
@@ -83,6 +74,17 @@
     "solargraph.diagnostics": true,
     "solargraph.formatting": true,
     "[ruby]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
     },
+    "window.titleBarStyle": "custom",
+    "workbench.iconTheme": "material-icon-theme",
+    "railsTestRunner.rspecCommand": "bundle exec rails test",
+    "ruby.specCommand": "bundle exec rails test",
+    "ruby.specPattern": "test",
+    "rubyTestExplorer.minitestCommand": "bundle exec rake test",
+    "rubyTestExplorer.logpanel": true,
+    "testExplorer.showOnRun": true,
+    "rubyTestExplorer.testFramework": "minitest",
+    "diffEditor.renderSideBySide": true,
 }
