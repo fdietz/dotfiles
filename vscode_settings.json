@@ -1,5 +1,5 @@
 {
-    "breadcrumbs.enabled": false,
+    "breadcrumbs.enabled": true,
     "editor.fontSize": 14,
     "editor.fontFamily": "Fira Code",
     "editor.tabSize": 2,
@@ -10,11 +10,8 @@
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
         "source.fixAll": true,
-        // For ESLint
         "source.fixAll.eslint": true,
-        // For TSLint
         "source.fixAll.tslint": true,
-        // For Stylelint
         "source.fixAll.stylelint": true
     },
     "explorer.confirmDragAndDrop": false,
@@ -32,14 +29,16 @@
         "**/node_modules": true,
         "**/bower_components": true,
         "**/deps": true,
-        "**/_build": true
+        "**/_build": true,
+        "**/vendor/**": true
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/deps/**": true,
-        "**/_build/**": true
+        "**/_build/**": true,
+        "**/vendor/**": true
     },
     "files.associations": {
         "*.erb": "erb"
@@ -54,7 +53,7 @@
     },
     "[ruby]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "misogi.ruby-rubocop"
+        "editor.defaultFormatter": "castwide.solargraph",
     },
     "[scss]": {
         "editor.formatOnSave": true
@@ -65,6 +64,7 @@
     "eslint.validate": [
         "javascript",
         "javascriptreact",
+        "typescript",
         "vue",
     ],
     "emmet.includeLanguages": {
@@ -106,5 +106,16 @@
     "vetur.format.defaultFormatter.postcss": "prettier",
     "vetur.format.defaultFormatter.scss": "prettier",
     "vetur.format.defaultFormatter.js": "prettier",
-    "vetur.format.defaultFormatter.ts": "prettier"
+    "vetur.format.defaultFormatter.ts": "prettier",
+    "[gemfile]": {
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
+    },
+    "gitlab.instanceUrl": "https://gitlab.sumcumo.net/",
+    "vsonline.authentication.accountProvider": "Microsoft",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vsonline.accountProvider": "Microsoft",
+    "codespaces.accountProvider": "Microsoft",
+    "codespaces.planFilter": "/subscriptions/4e022397-fb03-48ac-b355-4ec3406a5723/resourceGroups/vso-rg-aa4957c/providers/Microsoft.VSOnline/plans/vso-plan-westeurope"
 }
