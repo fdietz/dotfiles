@@ -32,13 +32,13 @@ Plug 'neomake/neomake'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
-Plug 'garbas/vim-snipmate'
+" Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 
 Plug 'ervandew/supertab'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " languages
 Plug 'sheerun/vim-polyglot'

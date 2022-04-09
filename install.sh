@@ -34,6 +34,10 @@ lnif $dotfiles/bash_profile $HOME/.bash_profile
 lnif $dotfiles/bashrc $HOME/.bashrc
 lnif $dotfiles/bash $HOME/.bash
 
+# zshell
+echo "Setting up zshell...\n"
+lnif $dotfiles/zprofile $HOME/.zprofile
+
 # git
 echo "Setting up dev tools git...\n"
 lnif $dotfiles/gitconfig $HOME/.gitconfig

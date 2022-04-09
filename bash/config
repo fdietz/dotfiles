@@ -1,4 +1,4 @@
 # required for mysql to compile correctly on snow leopard
 export ARCHFLAGS="-arch x86_64"
-
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export EDITOR="vim"

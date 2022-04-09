@@ -9,14 +9,14 @@ fi
 
 # ruby
 asdf plugin-add ruby
-asdf install ruby 2.6.5
-asdf global ruby 2.6.5
+asdf install ruby 3.1.1
+asdf global ruby 3.1.1
 
 # node
 asdf plugin-add nodejs
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-asdf install nodejs 12.13.0
-asdf global nodejs 12.13.0
+asdf install nodejs 16.11.0
+asdf global nodejs 16.11.0
 
 # erlang
 export MACOSX_DEPLOYMENT_TARGET=10.14
