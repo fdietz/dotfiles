@@ -18,6 +18,9 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install nodejs 16.11.0
 asdf global nodejs 16.11.0
 
+asdf plugin-add yarn
+asdf install yarn latest
+
 # erlang
 export MACOSX_DEPLOYMENT_TARGET=10.14
 asdf plugin-add erlang
