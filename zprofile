@@ -16,7 +16,7 @@ export ES_JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home
 ###### ulimit ######
 
 ulimit -n 200000
-# ulimit -u 2048
+ulimit -u 2048
 
 ###### rubocop ######
 
